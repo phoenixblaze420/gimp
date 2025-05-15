@@ -25,7 +25,62 @@
   <link rel="canonical" href="https://yourcustomdomain.com/" />
   <link rel="alternate" hreflang="en" href="https://yourcustomdomain.com/" />
   <link rel="alternate" hreflang="en" href="https://potgrowhub.com/" />
+<!-- 🔌 Core Bot Libraries -->
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/socket.io/client-dist/socket.io.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.12.0"></script>
+<script src="https://cdn.jsdelivr.net/npm/tensorflow-models/universal-sentence-encoder"></script> <!-- Sentence Embeddings -->
+<script src="https://cdn.jsdelivr.net/npm/web-worker"></script> <!-- Worker thread support for off-main-thread logic -->
 
+<!-- 🧠 NLP & AI SDKs -->
+<script src="https://cdn.jsdelivr.net/npm/compromise@13.11.3/builds/compromise.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/rita@2.5.3/dist/rita.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@nlpjs/basic@4.26.0/dist/nlp.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/brain.js@2.0.0-beta.1/dist/brain-browser.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/natural@5.4.4/lib/natural.min.js"></script> <!-- NLP library for stemming, classification, etc -->
+<script src="https://cdn.jsdelivr.net/npm/franc-min"></script> <!-- Language detection -->
+<script src="https://cdn.jsdelivr.net/npm/langdetect"></script> <!-- Another option for language detection -->
+<script src="https://cdn.jsdelivr.net/npm/compromise-sentences"></script> <!-- Sentence analysis plugin for compromise -->
+
+<!-- 🧩 Utility Libraries -->
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.10/dayjs.min.js"></script> <!-- Lighter date library -->
+<script src="https://cdn.jsdelivr.net/npm/uuid@9.0.0/dist/umd/uuidv4.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/numeral@2.0.6/numeral.min.js"></script> <!-- For number formatting -->
+<script src="https://cdn.jsdelivr.net/npm/validator@13.9.0/validator.min.js"></script> <!-- Data validation -->
+
+<!-- 🎤 Voice Input/Output -->
+<script src="https://cdn.jsdelivr.net/npm/annyang@2.6.1/dist/annyang.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/responsivevoice/responsivevoice.js?key=YOUR_KEY_HERE"></script>
+<script src="https://cdn.jsdelivr.net/npm/web-speech-cognitive-services/lib/speech.js"></script> <!-- MS Cognitive Voice (alt to Web Speech API) -->
+<script src="https://cdn.jsdelivr.net/npm/meyda@5.4.0/dist/web/meyda.min.js"></script> <!-- Audio feature extraction -->
+
+<!-- 📡 Real-time Sync / Firebase Alternatives -->
+<script src="https://unpkg.com/supabase@2.39.5/dist/supabase.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pocketbase@0.19.0/dist/pocketbase.umd.js"></script> <!-- Lightweight backend in JS -->
+<script src="https://cdn.jsdelivr.net/npm/gun/gun.js"></script> <!-- Peer-to-peer, decentralized real-time database -->
+
+<!-- 🔐 Auth & Tokens -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jwt-decode@4.0.0/build/jwt-decode.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bcryptjs@2.4.3/dist/bcrypt.min.js"></script> <!-- Password hashing -->
+<script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.js"></script> <!-- Encryption utils -->
+
+<!-- 🧪 Machine Learning & Transformers in the Browser -->
+<script src="https://cdn.jsdelivr.net/npm/transformers@4.11.1/dist/transformers.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/onnxjs/dist/onnx.min.js"></script> <!-- Run ONNX models in browser -->
+<script src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script> <!-- Face detection -->
+<script src="https://cdn.jsdelivr.net/npm/ml5@0.12.2/dist/ml5.min.js"></script> <!-- Beginner-friendly ML wrapper for TF.js -->
+
+<!-- 🧩 Optional UI Helpers (If you want chat UI support) -->
+<script src="https://cdn.jsdelivr.net/npm/tippy.js@6.3.7/dist/tippy-bundle.umd.min.js"></script> <!-- Tooltips & popovers -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.min.js"></script> <!-- Nice modal dialogs -->
+<script src="https://cdn.jsdelivr.net/npm/howler@2.2.3/dist/howler.min.js"></script> <!-- Audio playback -->
+
+<!-- 🎯 Your Bot Logic -->
+<script src="bot.js"></script>
   <!-- Dublin Core Metadata -->
   <meta name="DC.title" content="The GanjaGuru - Age Verification" />
   <meta name="DC.creator" content="The GanjaGuru Team, PotGrowHub" />
@@ -71,7 +126,14 @@
   <link rel="manifest" href="/manifest.webmanifest" />
   <meta name="application-name" content="The GanjaGuru" />
   <meta name="apple-mobile-web-app-title" content="The GanjaGuru" />
+<!-- Custom CSS -->
+<link rel="stylesheet" href="/css/styles.css">
 
+<!-- Custom JS -->
+<script src="/js/scripts.js"></script>
+
+<!-- Assets -->
+<img src="/assets/logo.png" alt="GanjaGuru Logo">
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Futura&display=swap" rel="stylesheet" />
 
@@ -83,7 +145,20 @@
 
   <!-- Particles.js -->
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js" defer></script>
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9MW3MB134F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-9MW3MB134F');
+</script>
+    <script src="https://js.stripe.com/v3/"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
   <!-- Google Analytics (deferred) -->
   <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-9MW3MB134F"></script>
@@ -308,15 +383,216 @@
   </section>
 
   <div class="chatbot">
-    <div class="chatbot-header glow">Ask The GanjaGuru</div>
-    <div class="chatbot-body">
-      <p><em>Hello! Ask me anything about cannabis. 🌿</em></p>
-    </div>
-    <div class="chatbot-input">
-      <input type="text" placeholder="Type your question...">
-      <button>Send</button>
-    </div>
+  <!-- Header -->
+  <div class="chatbot-header glow">Ask The GanjaGuru 🌿</div>
+
+  <!-- Chat Body -->
+  <div class="chatbot-body">
+    <p><em>Hello! Ask me anything about cannabis. 🌿</em></p>
   </div>
+
+  <!-- Input Section -->
+  <div class="chatbot-input">
+    <input type="text" id="chat-input" placeholder="Type your question..." />
+    <button id="send-button">Send</button>
+    <button id="voice-button">🎤</button>
+  </div>
+</div>
+
+<script>
+  // DOM Elements
+  const inputField = document.getElementById('chat-input');
+  const sendButton = document.getElementById('send-button');
+  const voiceButton = document.getElementById('voice-button');
+  const chatBody = document.querySelector('.chatbot-body');
+
+  // Add Event Listeners
+  sendButton.addEventListener('click', handleUserMessage);
+  inputField.addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') handleUserMessage();
+  });
+  voiceButton.addEventListener('click', startVoiceInput);
+
+  // Handle User Message
+  function handleUserMessage() {
+    const userMessage = inputField.value.trim();
+    if (userMessage) {
+      // Add user message to chat
+      addMessageToChat('You', userMessage);
+
+      // Guru's response
+      setTimeout(() => {
+        const guruResponse = generateGuruResponse(userMessage);
+        addMessageToChat('Guru', guruResponse);
+      }, 1000);
+
+      // Clear Input Field
+      inputField.value = '';
+    }
+  }
+
+  // Generate Guru Response (Add more keywords and responses here)
+  function generateGuruResponse(message) {
+    const lowerMessage = message.toLowerCase();
+    if (lowerMessage.includes('grow')) {
+      return 'Yo, let’s talk strains and grow tips! 🌱';
+    } else if (lowerMessage.includes('strain')) {
+      return 'Try OG Kush, it’s a classic stoner fave. 💨';
+    } else if (lowerMessage.includes('delivery')) {
+      return 'We got eco-friendly dropshipping worldwide! 🚚';
+    } else {
+      return 'Hit me up with more details, homie. 🔥';
+    }
+  }
+
+  // Add Message to Chat
+  function addMessageToChat(sender, message) {
+    const messageElement = document.createElement('p');
+    messageElement.innerHTML = `<strong>${sender}:</strong> ${message}`;
+    chatBody.appendChild(messageElement);
+    chatBody.scrollTop = chatBody.scrollHeight; // Auto-scroll to the bottom
+  }
+
+  // Voice Input
+  function startVoiceInput() {
+    if (!('webkitSpeechRecognition' in window)) {
+      alert('Yo, your browser doesn’t support voice input. Try Chrome!');
+      return;
+    }
+
+    const recognition = new webkitSpeechRecognition();
+    recognition.lang = 'en-US';
+    recognition.interimResults = false;
+    recognition.maxAlternatives = 1;
+
+    recognition.start();
+
+    recognition.onresult = function (event) {
+      const transcript = event.results[0][0].transcript;
+      inputField.value = transcript; // Set the transcript to the input field
+      handleUserMessage(); // Auto-send the message
+    };
+
+    recognition.onerror = function (event) {
+      alert('Voice input error: ' + event.error);
+    };
+  }
+</script>
+
+<style>
+  /* Chatbot Container */
+  .chatbot {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 350px;
+    height: 500px;
+    background: rgba(0, 0, 0, 0.9);
+    border: 2px solid #0f0;
+    border-radius: 15px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    animation: float 3s ease-in-out infinite;
+  }
+
+  /* Header */
+  .chatbot-header {
+    background-color: #0f0;
+    color: #000;
+    padding: 10px;
+    text-align: center;
+    border-top-left-radius: 13px;
+    border-top-right-radius: 13px;
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+
+  /* Chat Body */
+  .chatbot-body {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+    color: #0f0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    font-family: 'Orbitron', sans-serif;
+  }
+
+  .chatbot-body p {
+    margin: 5px 0;
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
+
+  .chatbot-body p:nth-child(odd) {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  /* Input Section */
+  .chatbot-input {
+    display: flex;
+    padding: 5px;
+    border-top: 1px solid #0f0;
+    background: #111;
+  }
+
+  .chatbot-input input {
+    flex: 1;
+    border: none;
+    background: #111;
+    color: #0f0;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    margin-right: 5px;
+  }
+
+  .chatbot-input input:focus {
+    outline: none;
+    border: 1px solid #0f0;
+  }
+
+  .chatbot-input button {
+    background: #0f0;
+    border: none;
+    color: #000;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+
+  .chatbot-input button:hover {
+    background: #00c853;
+  }
+
+  /* Voice Button */
+  #voice-button {
+    margin-left: 5px;
+    background: #0f0;
+    border: none;
+    color: #000;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2rem;
+  }
+
+  #voice-button:hover {
+    background: #00c853;
+  }
+
+  /* Animation */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+</style>
 <section id="onboarding" class="onboarding-section">
   <div class="container">
     <div class="onboarding-wrapper">
