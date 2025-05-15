@@ -1,9 +1,16 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The GanjaGuru - AI-Powered Cannabis Ecosystem</title>
+    <meta name="description" content="Explore The GanjaGuru, your AI-powered cannabis ecosystem. From seed to smoke, we've got you covered.">
+<meta name="keywords" content="cannabis, ganja, AI budtender, grow rooms, 3D printing, smart home integration">
+<meta property="og:title" content="The GanjaGuru - AI-Powered Cannabis Ecosystem">
+<meta property="og:description" content="From seed to smoke, an eco-friendly, tech-driven cannabis journey.">
+<meta property="og:image" content="your-og-image.jpg">
+    
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts -->
@@ -12,7 +19,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <style>
+    <!-- Libraries for AI/ML -->
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.10.0"></script>
+<script src="https://cdn.jsdelivr.net/npm/brain.js@2.0.0-beta.3/dist/brain-browser.min.js"></script>
+
+<!-- AR/VR Frameworks -->
+<script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.min.js"></script>
+
+<!-- 3D Modeling & Printing -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r152/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js/examples/js/loaders/STLLoader.js"></script>
+
+<!-- E-commerce Checkout -->
+<script src="https://cdn.jsdelivr.net/npm/stripe@11.15.0/stripe.min.js"></script>
+<script src="https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID"></script>
+
+<!-- Gamification and Animations -->
+<script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/confetti-js@0.0.18/dist/index.min.js"></script>    <style>
         :root {
             --neon-green: #39ff14;
             --cannabis-green: #2e8b57;
@@ -369,7 +394,63 @@
             </div>
         </div>
     </section>
-
+<section id="onboarding" class="py-16 px-4 bg-gradient-to-r from-green-800 to-black text-center text-white">
+    <h2 class="text-3xl md:text-4xl font-bold orbitron neon-text mb-6">Get Started with GanjaGuru</h2>
+    <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+        Start your journey from seed to smoke with our easy onboarding process. Join our community and elevate your cannabis hustle.
+    </p>
+    <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <button class="neon-button px-8 py-4 rounded-full orbitron text-lg">Sign Up Now</button>
+        <button class="px-8 py-4 rounded-full orbitron text-lg bg-white text-green-900 hover:bg-gray-200 transition duration-300">
+            Learn More
+        </button>
+    </div>
+</section>
+    <section id="account" class="py-16 px-4 bg-gradient-to-bl from-black to-green-800 text-center text-white">
+    <h2 class="text-3xl md:text-4xl font-bold orbitron neon-text mb-6">Manage Your Account</h2>
+    <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+        Update your details, check your orders, and stay in control of your cannabis empire.
+    </p>
+    <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <a href="/login" class="neon-button px-8 py-4 rounded-full orbitron text-lg">Log In</a>
+        <a href="/signup" class="px-8 py-4 rounded-full orbitron text-lg bg-white text-green-900 hover:bg-gray-200 transition duration-300">
+            Create Account
+        </a>
+    </div>
+</section>
+    <section id="download" class="py-16 px-4 bg-gradient-to-r from-green-700 to-purple-700 text-center text-white">
+    <h2 class="text-3xl md:text-4xl font-bold orbitron neon-text mb-6">Download & Install</h2>
+    <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+        Get the GanjaGuru app for your device and manage your hustle on the go.
+    </p>
+    <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <a href="/download/android" class="neon-button px-8 py-4 rounded-full orbitron text-lg">Download for Android</a>
+        <a href="/download/ios" class="px-8 py-4 rounded-full orbitron text-lg bg-white text-green-900 hover:bg-gray-200 transition duration-300">
+            Download for iOS
+        </a>
+    </div>
+</section>
+    <section id="about" class="py-16 px-4 bg-gradient-to-t from-black to-green-900 text-center text-white">
+    <h2 class="text-3xl md:text-4xl font-bold orbitron neon-text mb-6">About GanjaGuru</h2>
+    <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+        At GanjaGuru, we combine technology, sustainability, and passion to revolutionize the cannabis industry. From seed to smoke, we’ve got you covered.
+    </p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div class="glass-card p-6">
+            <h3 class="text-2xl font-bold mb-2">Our Mission</h3>
+            <p class="text-gray-300">
+                Empowering ganjapreneurs with the tools and knowledge to grow smarter, sell better, and live greener.
+            </p>
+        </div>
+        <div class="glass-card p-6">
+            <h3 class="text-2xl font-bold mb-2">Our Vision</h3>
+            <p class="text-gray-300">
+                To be the world’s leading cannabis ecosystem, connecting growers, sellers, and enthusiasts globally.
+            </p>
+        </div>
+    </div>
+</section>
+    
     <!-- Features Section -->
     <section id="features" class="py-16 px-4">
         <div class="container mx-auto">
@@ -497,7 +578,76 @@
             </div>
         </div>
     </section>
+<section id="what-we-do" class="py-16 px-4 bg-gradient-to-bl from-black to-green-900 text-center text-white">
+    <h2 class="text-3xl md:text-4xl font-bold orbitron neon-text mb-6">What We Do</h2>
+    <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+        At GanjaGuru, we combine innovation and passion to revolutionize the cannabis industry. Here’s how we make it happen:
+    </p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="glass-card p-6">
+            <h3 class="text-xl font-bold mb-4">Grow Room Design</h3>
+            <p class="text-gray-300">Custom grow room designs tailored to your needs.</p>
+        </div>
+        <div class="glass-card p-6">
+            <h3 class="text-xl font-bold mb-4">3D Printing Services</h3>
+            <p class="text-gray-300">Get custom cannabis accessories printed on demand.</p>
+        </div>
+        <div class="glass-card p-6">
+            <h3 class="text-xl font-bold mb-4">AI-Powered Insights</h3>
+            <p class="text-gray-300">Leverage cutting-edge AI for strain recommendations and growing tips.</p>
+        </div>
+    </div>
+</section>    
+<section id="booking" class="py-16 px-4 bg-gradient-to-br from-green-900 to-blue-900 text-center text-white">
+    <h2 class="text-3xl md:text-4xl font-bold orbitron neon-text mb-6">Book a Consultation</h2>
+    <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+        Need expert advice? Schedule a one-on-one session with our cannabis consultants. It's quick and easy.
+    </p>
+    <form class="glass-card mx-auto p-6 max-w-lg">
+        <label for="name" class="block text-left text-gray-300 mb-2">Name</label>
+        <input type="text" id="name" class="w-full bg-black bg-opacity-50 border border-green-700 rounded px-4 py-3 text-white mb-4">
 
+        <label for="date" class="block text-left text-gray-300 mb-2">Select Date</label>
+        <input type="date" id="date" class="w-full bg-black bg-opacity-50 border border-green-700 rounded px-4 py-3 text-white mb-4">
+
+        <label for="time" class="block text-left text-gray-300 mb-2">Select Time</label>
+        <input type="time" id="time" class="w-full bg-black bg-opacity-50 border border-green-700 rounded px-4 py-3 text-white mb-4">
+
+        <button type="submit" class="neon-button px-6 py-3 rounded-full w-full">Book Now</button>
+    </form>
+</section>    
+<section id="ai-ml" class="py-16 px-4 bg-gradient-to-br from-black to-green-900 text-center">
+    <h2 class="text-3xl md:text-4xl font-bold orbitron neon-text mb-6">AI-Powered Insights</h2>
+    <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+        Experience next-level recommendations powered by AI. Whether it's strain selection, growing tips, or market analysis—our AI has your back.
+    </p>
+    <div id="ai-demo" class="glass-card mx-auto p-8 max-w-2xl">
+        <p class="text-left text-white">Ask me anything about cannabis cultivation, strains, or industry trends:</p>
+        <form id="ai-form" class="mt-4">
+            <input 
+                type="text" 
+                id="ai-input" 
+                class="w-full bg-black bg-opacity-50 border border-green-700 rounded-full px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-green-500 text-base"
+                placeholder="What's the best strain for relaxation?"
+            >
+            <button type="submit" class="neon-button mt-4 px-6 py-3 rounded-full w-full">
+                Get AI Insight
+            </button>
+        </form>
+    </div>
+</section>
+    <section id="ar-vr" class="py-16 px-4 bg-gradient-to-r from-green-900 to-blue-900 text-center text-white">
+    <h2 class="text-3xl md:text-4xl font-bold orbitron neon-text mb-6">AR/VR Grow Room Designer</h2>
+    <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+        Visualize your perfect grow room in stunning virtual reality. Drag, drop, and design with cutting-edge tools.
+    </p>
+    <a-scene embedded style="height: 500px;">
+        <a-box position="0 1 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
+        <a-sphere position="-2 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
+        <a-cylinder position="1 0.75 -2" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
+        <a-plane rotation="-90 0 0" position="0 0 -4" width="10" height="10" color="#7BC8A4"></a-plane>
+    </a-scene>
+</section>
     <!-- Chat with GanjaGuru Section -->
     <section class="py-16 px-4 relative">
         <div class="absolute inset-0 bg-gradient-to-b from-black to-green-900 opacity-30"></div>
@@ -545,6 +695,183 @@
         </div>
     </section>
 
+    <section id="blog" class="py-16 px-4 bg-gradient-to-r from-green-900 to-purple-900 text-center text-white">
+    <h2 class="text-3xl md:text-4xl font-bold orbitron neon-text mb-6">The GanjaGuru Blog</h2>
+    <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+        Stay updated with the latest trends, tips, and stories in the cannabis world.
+    </p>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Blog Post 1 -->
+        <div class="glass-card p-6">
+            <h3 class="text-xl font-bold mb-4">5 Tips for Growing OG Kush</h3>
+            <p class="text-gray-300">Learn the secrets to growing the dankest OG Kush.</p>
+            <a href="#post1" class="neon-button mt-4 px-6 py-3 rounded-full">Read More</a>
+        </div>
+        <!-- Blog Post 2 -->
+        <div class="glass-card p-6">
+            <h3 class="text-xl font-bold mb-4">Top 10 Cannabis Strains in 2025</h3>
+            <p class="text-gray-300">Check out the hottest strains to grow and smoke this year.</p>
+            <a href="#post2" class="neon-button mt-4 px-6 py-3 rounded-full">Read More</a>
+        </div>
+        <!-- Blog Post 3 -->
+        <div class="glass-card p-6">
+            <h3 class="text-xl font-bold mb-4">How AI is Changing the Cannabis Game</h3>
+            <p class="text-gray-300">Discover how AI is helping growers and enthusiasts alike.</p>
+            <a href="#post3" class="neon-button mt-4 px-6 py-3 rounded-full">Read More</a>
+        </div>
+    </div>
+</section>
+    
+<section id="gallery" class="py-16 px-4 bg-gradient-to-r from-green-800 to-blue-900 text-center text-white">
+    <h2 class="text-3xl md:text-4xl font-bold orbitron neon-text mb-6">Gallery: Our Work in Action</h2>
+    <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+        Explore our projects, products, and the magic we create.
+    </p>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <img src="https://via.placeholder.com/300" alt="Gallery Image 1" class="rounded-lg">
+        <img src="https://via.placeholder.com/300" alt="Gallery Image 2" class="rounded-lg">
+        <img src="https://via.placeholder.com/300" alt="Gallery Image 3" class="rounded-lg">
+        <img src="https://via.placeholder.com/300" alt="Gallery Image 4" class="rounded-lg">
+        <img src="https://via.placeholder.com/300" alt="Gallery Image 5" class="rounded-lg">
+        <img src="https://via.placeholder.com/300" alt="Gallery Image 6" class="rounded-lg">
+    </div>
+</section>
+<section id="team" class="py-16 px-4 bg-gradient-to-bl from-green-900 to-black text-center text-white">
+    <h2 class="text-3xl md:text-4xl font-bold orbitron neon-text mb-6">Meet the Dream Team</h2>
+    <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+        Our passionate team works hard to bring you the ultimate seed-to-smoke experience.
+    </p>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Team Member 1 -->
+        <div class="glass-card p-6">
+            <img src="https://via.placeholder.com/150" alt="Team Member 1" class="w-32 h-32 mx-auto rounded-full mb-4">
+            <h3 class="text-xl font-bold">Jane Doe</h3>
+            <p class="text-gray-300">CEO & Founder</p>
+        </div>
+        <!-- Team Member 2 -->
+        <div class="glass-card p-6">
+            <img src="https://via.placeholder.com/150" alt="Team Member 2" class="w-32 h-32 mx-auto rounded-full mb-4">
+            <h3 class="text-xl font-bold">John Blaze</h3>
+            <p class="text-gray-300">Chief Grow Designer</p>
+        </div>
+        <!-- Team Member 3 -->
+        <div class="glass-card p-6">
+            <img src="https://via.placeholder.com/150" alt="Team Member 3" class="w-32 h-32 mx-auto rounded-full mb-4">
+            <h3 class="text-xl font-bold">Mary Green</h3>
+            <p class="text-gray-300">Cannabis Consultant</p>
+        </div>
+        <!-- Team Member 4 -->
+        <div class="glass-card p-6">
+            <img src="https://via.placeholder.com/150" alt="Team Member 4" class="w-32 h-32 mx-auto rounded-full mb-4">
+            <h3 class="text-xl font-bold">Tommy High</h3>
+            <p class="text-gray-300">Tech Wizard</p>
+        </div>
+    </div>
+</section>
+    <section id="help-support" class="py-16 px-4 bg-gradient-to-r from-black to-green-900 text-center text-white">
+    <h2 class="text-3xl md:text-4xl font-bold orbitron neon-text mb-6">Need Help? We're Here for You</h2>
+    <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+        Got questions or need support? Reach out to our team 24/7 for assistance.
+    </p>
+    <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <a href="mailto:support@ganjaguru.com" class="neon-button px-8 py-4 rounded-full orbitron text-lg">Contact Support</a>
+        <a href="#faqs" class="px-8 py-4 rounded-full orbitron text-lg bg-white text-green-900 hover:bg-gray-200 transition duration-300">
+            Browse FAQs
+        </a>
+    </div>
+</section>
+<section id="faqs" class="py-16 px-4 bg-gradient-to-bl from-green-800 to-black text-center text-white">
+    <h2 class="text-3xl md:text-4xl font-bold orbitron neon-text mb-6">FAQs</h2>
+    <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+        Got questions? We’ve got answers.
+    </p>
+    <div class="text-left max-w-4xl mx-auto">
+        <div class="mb-6">
+            <h3 class="text-xl font-bold">Q: What is GanjaGuru?</h3>
+            <p class="text-gray-300">A: GanjaGuru is your all-in-one cannabis ecosystem for designing, growing, and enjoying cannabis.</p>
+        </div>
+        <div class="mb-6">
+            <h3 class="text-xl font-bold">Q: How do I book a consultation?</h3>
+            <p class="text-gray-300">A: Simply use our booking section to pick a date and time that works for you.</p>
+        </div>
+        <div class="mb-6">
+            <h3 class="text-xl font-bold">Q: Does GanjaGuru offer delivery?</h3>
+            <p class="text-gray-300">A: Yes, we offer on-demand delivery for all your cannabis needs.</p>
+        </div>
+    </div>
+</section>
+    <section id="testimonials" class="py-16 px-4 bg-gradient-to-r from-green-700 to-purple-700 text-center text-white">
+    <h2 class="text-3xl md:text-4xl font-bold orbitron neon-text mb-6">What Our Customers Say</h2>
+    <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+        Don’t just take our word for it. Here’s what our customers have to say.
+    </p>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Testimonial 1 -->
+        <div class="glass-card p-6">
+            <p class="text-gray-300 mb-4">"The AI recommendations were spot on! Found the perfect strain for my needs."</p>
+            <h4 class="font-bold text-green-400">- Alex G.</h4>
+        </div>
+        <!-- Testimonial 2 -->
+        <div class="glass-card p-6">
+            <p class="text-gray-300 mb-4">"Amazing 3D printing service! Got my custom bong delivered in just a week."</p>
+            <h4 class="font-bold text-green-400">- Maria S.</h4>
+        </div>
+        <!-- Testimonial 3 -->
+        <div class="glass-card p-6">
+            <p class="text-gray-300 mb-4">"The grow room design consultation was a game-changer for my setup."</p>
+            <h4 class="font-bold text-green-400">- Chris T.</h4>
+        </div>
+    </div>
+</section>
+    <section id="gamification" class="py-16 px-4 bg-gradient-to-tr from-green-800 to-yellow-800 text-center text-white">
+    <h2 class="text-3xl md:text-4xl font-bold orbitron neon-text mb-6">Gamify Your Experience</h2>
+    <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+        Earn points, badges, and rewards as you explore our platform. Complete challenges and unlock exclusive perks.
+    </p>
+    <button id="start-gamification" class="neon-button px-6 py-3 rounded-full orbitron text-base sm:text-lg">
+        Start Playing
+    </button>
+    <canvas id="confetti-canvas" class="mt-4"></canvas>
+</section>
+   <section id="marketplace" class="py-16 px-4 bg-gradient-to-r from-green-900 to-purple-900 text-center text-white">
+    <h2 class="text-3xl md:text-4xl font-bold orbitron neon-text mb-6">Cannabis Marketplace</h2>
+    <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+        Shop premium cannabis seeds, tools, and accessories. Grow, smoke, and chill with the best.
+    </p>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Product Card 1 -->
+        <div class="glass-card p-6">
+            <img src="https://via.placeholder.com/150" alt="Product 1" class="w-full h-40 object-cover rounded-lg mb-4">
+            <h3 class="text-xl font-bold mb-2">Premium OG Kush Seeds</h3>
+            <p class="text-gray-300 mb-4">Grow the dankest OG Kush with our top-quality seeds.</p>
+            <button class="neon-button px-6 py-3 rounded-full w-full">Buy Now</button>
+        </div>
+        <!-- Product Card 2 -->
+        <div class="glass-card p-6">
+            <img src="https://via.placeholder.com/150" alt="Product 2" class="w-full h-40 object-cover rounded-lg mb-4">
+            <h3 class="text-xl font-bold mb-2">Smart Grow Lights</h3>
+            <p class="text-gray-300 mb-4">Automate your grow setup with IoT-enabled grow lights.</p>
+            <button class="neon-button px-6 py-3 rounded-full w-full">Shop Now</button>
+        </div>
+        <!-- Product Card 3 -->
+        <div class="glass-card p-6">
+            <img src="https://via.placeholder.com/150" alt="Product 3" class="w-full h-40 object-cover rounded-lg mb-4">
+            <h3 class="text-xl font-bold mb-2">Custom Bong Designs</h3>
+            <p class="text-gray-300 mb-4">Get personalized bongs with our 3D-printing service.</p>
+            <button class="neon-button px-6 py-3 rounded-full w-full">Order Now</button>
+        </div>
+    </div>
+</section>
+    <section id="3d-printing" class="py-16 px-4 bg-gradient-to-br from-green-900 to-amber-900 text-center text-white">
+    <h2 class="text-3xl md:text-4xl font-bold orbitron neon-text mb-6">3D Print Accessories</h2>
+    <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+        Design and print custom bongs, pipes, and tools with ease. Upload your 3D model or explore our templates.
+    </p>
+    <div id="3d-canvas" class="glass-card mx-auto p-8 max-w-3xl">
+        <p class="text-white">Upload your STL file to preview your design:</p>
+        <input type="file" id="stl-upload" accept=".stl" class="mt-4 bg-black bg-opacity-50 border border-green-700 rounded px-4 py-3 text-white w-full">
+    </div>
+</section>
     <!-- CTA Section -->
     <section class="py-16 px-4 bg-gradient-to-r from-green-900 to-purple-900 bg-opacity-50">
         <div class="container mx-auto text-center">
@@ -562,7 +889,42 @@
             </div>
         </div>
     </section>
-
+    <section id="resources" class="py-16 px-4 bg-gradient-to-tr from-green-900 to-blue-900 text-center text-white">
+    <h2 class="text-3xl md:text-4xl font-bold orbitron neon-text mb-6">Educational Resources</h2>
+    <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+        Learn everything from seed-to-smoke with our expert guides, videos, and tutorials.
+    </p>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Resource Card 1 -->
+        <div class="glass-card p-6">
+            <h3 class="text-xl font-bold mb-2">Beginner's Guide to Growing</h3>
+            <p class="text-gray-300 mb-4">Step-by-step instructions to grow your first cannabis plant.</p>
+            <a href="#guide1" class="neon-button px-6 py-3 rounded-full">Read More</a>
+        </div>
+        <!-- Resource Card 2 -->
+        <div class="glass-card p-6">
+            <h3 class="text-xl font-bold mb-2">3D Printing Tutorial</h3>
+            <p class="text-gray-300 mb-4">Learn how to design and print custom accessories.</p>
+            <a href="#guide2" class="neon-button px-6 py-3 rounded-full">Watch Video</a>
+        </div>
+        <!-- Resource Card 3 -->
+        <div class="glass-card p-6">
+            <h3 class="text-xl font-bold mb-2">Cannabis Strain Database</h3>
+            <p class="text-gray-300 mb-4">Explore detailed profiles of popular cannabis strains.</p>
+            <a href="#database" class="neon-button px-6 py-3 rounded-full">Explore Now</a>
+        </div>
+    </div>
+</section>
+    <section id="community" class="py-16 px-4 bg-gradient-to-bl from-black to-green-800 text-center text-white">
+    <h2 class="text-3xl md:text-4xl font-bold orbitron neon-text mb-6">Join the Community</h2>
+    <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+        Connect with fellow ganjapreneurs, share tips, and grow together.
+    </p>
+    <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <a href="#forums" class="neon-button px-8 py-4 rounded-full orbitron text-lg">Visit Forums</a>
+        <a href="#chat" class="px-8 py-4 rounded-full orbitron text-lg bg-white text-green-900 hover:bg-gray-200 transition duration-300">Join the Discord</a>
+    </div>
+</section>
     <!-- Footer -->
     <footer class="bg-black py-12 px-4">
         <div class="container mx-auto">
