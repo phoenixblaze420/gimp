@@ -1,16 +1,14 @@
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The GanjaGuru - AI-Powered Cannabis Ecosystem</title>
     <meta name="description" content="Explore The GanjaGuru, your AI-powered cannabis ecosystem. From seed to smoke, we've got you covered.">
-<meta name="keywords" content="cannabis, ganja, AI budtender, grow rooms, 3D printing, smart home integration">
-<meta property="og:title" content="The GanjaGuru - AI-Powered Cannabis Ecosystem">
-<meta property="og:description" content="From seed to smoke, an eco-friendly, tech-driven cannabis journey.">
-<meta property="og:image" content="your-og-image.jpg">
-    
+    <meta name="keywords" content="cannabis, ganja, AI budtender, grow rooms, 3D printing, smart home integration">
+    <meta property="og:title" content="The GanjaGuru - AI-Powered Cannabis Ecosystem">
+    <meta property="og:description" content="From seed to smoke, an eco-friendly, tech-driven cannabis journey.">
+    <meta property="og:image" content="your-og-image.jpg">
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts -->
@@ -20,1179 +18,849 @@
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <!-- Libraries for AI/ML -->
-<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.10.0"></script>
-<script src="https://cdn.jsdelivr.net/npm/brain.js@2.0.0-beta.3/dist/brain-browser.min.js"></script>
-
-<!-- AR/VR Frameworks -->
-<script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.min.js"></script>
-
-<!-- 3D Modeling & Printing -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r152/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js/examples/js/loaders/STLLoader.js"></script>
-
-<!-- E-commerce Checkout -->
-<script src="https://cdn.jsdelivr.net/npm/stripe@11.15.0/stripe.min.js"></script>
-<script src="https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID"></script>
-
-<!-- Gamification and Animations -->
-<script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/confetti-js@0.0.18/dist/index.min.js"></script>    <style>
-        :root {
-            --neon-green: #39ff14;
-            --cannabis-green: #2e8b57;
-            --cannabis-dark: #1e5631;
-            --cannabis-brown: #8b4513;
-            --cannabis-purple: #9932cc;
-            --cannabis-orange: #ff7f00;
-        }
-        
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-        
-        ::-webkit-scrollbar-track {
-            background: #0f0f0f;
-        }
-        
-        ::-webkit-scrollbar-thumb {
-            background: var(--cannabis-green);
-            border-radius: 5px;
-        }
-        
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--neon-green);
-        }
-        
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #0f0f0f;
-            color: #ffffff;
-            overflow-x: hidden;
-        }
-        
-        .orbitron {
-            font-family: 'Orbitron', sans-serif;
-        }
-        
-        .neon-text {
-            color: var(--neon-green);
-            text-shadow: 0 0 5px var(--neon-green), 
-                         0 0 10px var(--neon-green), 
-                         0 0 20px var(--neon-green);
-        }
-        
-        .neon-border {
-            border: 2px solid var(--neon-green);
-            box-shadow: 0 0 5px var(--neon-green), 
-                       0 0 10px var(--neon-green);
-        }
-        
-        .neon-button {
-            background-color: transparent;
-            color: var(--neon-green);
-            border: 2px solid var(--neon-green);
-            text-shadow: 0 0 5px var(--neon-green);
-            box-shadow: 0 0 5px var(--neon-green), 
-                       0 0 10px var(--neon-green);
-            transition: all 0.3s ease;
-        }
-        
-        .neon-button:hover {
-            background-color: var(--neon-green);
-            color: #000;
-            box-shadow: 0 0 10px var(--neon-green), 
-                       0 0 20px var(--neon-green), 
-                       0 0 30px var(--neon-green);
-        }
-        
-        .avatar-container {
-            animation: float 3s ease-in-out infinite;
-        }
-        
-        .smoke {
-            position: absolute;
-            opacity: 0;
-            transform: translateY(0);
-            animation: smoke 3s ease-out forwards;
-        }
-        
-        @keyframes float {
-            0% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-            100% {
-                transform: translateY(0px);
-            }
-        }
-        
-        @keyframes smoke {
-            0% {
-                opacity: 0.8;
-                transform: translateY(0) scale(0.8);
-            }
-            100% {
-                opacity: 0;
-                transform: translateY(-100px) scale(1.5);
-            }
-        }
-        
-        .glass-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-        }
-        
-        .gradient-border {
-            position: relative;
-            border-radius: 15px;
-            padding: 1px;
-        }
-        
-        .gradient-border::before {
-            content: "";
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, 
-                var(--cannabis-green), 
-                var(--neon-green), 
-                var(--cannabis-purple), 
-                var(--cannabis-orange));
-            border-radius: 16px;
-            z-index: -1;
-            animation: borderAnimation 4s linear infinite;
-        }
-        
-        @keyframes borderAnimation {
-            0% {
-                filter: hue-rotate(0deg);
-            }
-            100% {
-                filter: hue-rotate(360deg);
-            }
-        }
-        
-        .feature-card {
-            transition: all 0.3s ease;
-            transform-style: preserve-3d;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-10px) rotateY(5deg);
-            box-shadow: 0 10px 20px rgba(0, 255, 0, 0.2);
-        }
-        
-        .cannabis-bg {
-            background-image: 
-                radial-gradient(circle, rgba(30, 86, 49, 0.3) 1px, transparent 1px),
-                radial-gradient(circle, rgba(30, 86, 49, 0.2) 2px, transparent 2px);
-            background-size: 40px 40px, 60px 60px;
-            background-position: 0 0, 20px 20px;
-        }
-        
-        .chat-message {
-            transition: all 0.3s ease;
-            animation: messageAppear 0.5s ease;
-        }
-        
-        @keyframes messageAppear {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        /* Dark mode support */
-        @media (prefers-color-scheme: dark) {
-            .dark-toggle {
-                background-color: #0f0f0f;
-                color: #fff;
-            }
-        }
-        
-        /* Mobile responsiveness */
-        @media (max-width: 768px) {
-            .hero-content {
-                padding: 1rem;
-            }
-            
-            .feature-section {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
-    <script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.10.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/brain.js@2.0.0-beta.3/dist/brain-browser.min.js"></script>
+    <!-- AR/VR Frameworks -->
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.min.js"></script>
+    <!-- 3D Modeling & Printing -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r152/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js/examples/js/loaders/STLLoader.js"></script>
+    <!-- E-commerce Checkout -->
+    <script src="https://cdn.jsdelivr.net/npm/stripe@11.15.0/stripe.min.js"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID"></script>
+    <!-- Gamification and Animations -->
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/confetti-js@0.0.18/dist/index.min.js"></script>
+    <button id="mobile-menu-button" aria-label="Toggle menu" class="text-white focus:outline-none">
+      <script>
         tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        neonGreen: '#39ff14',
-                        cannabisGreen: '#2e8b57',
-                        cannabisDark: '#1e5631',
-                        cannabisBrown: '#8b4513',
-                        cannabisPurple: '#9932cc',
-                        cannabisOrange: '#ff7f00',
-                    },
-                    fontFamily: {
-                        orbitron: ['Orbitron', 'sans-serif'],
-                        poppins: ['Poppins', 'sans-serif'],
-                    }
-                }
+          darkMode: 'class',
+          theme: {
+            extend: {
+              colors: {
+                neonGreen: '#39ff14',
+                cannabisGreen: '#2e8b57',
+                cannabisDark: '#1e5631',
+                cannabisBrown: '#8b4513',
+                cannabisPurple: '#9932cc',
+                cannabisOrange: '#ff7f00',
+              },
+              fontFamily: {
+                orbitron: ['Orbitron', 'sans-serif'],
+                poppins: ['Poppins', 'sans-serif'],
+              }
             }
+          }
         }
-    </script>
-</head>
-<body class="cannabis-bg">
+      </script>
+  <body class="cannabis-bg">
     <!-- Navigation -->
     <nav class="fixed top-0 w-full z-50 bg-black bg-opacity-80 backdrop-filter backdrop-blur-lg border-b border-green-500 border-opacity-30">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <div class="flex items-center">
-                <div class="text-2xl md:text-3xl font-bold orbitron neon-text">
-                    <i class="fas fa-cannabis mr-2"></i>GanjaGuru
-                </div>
-            </div>
-            
-            <div class="hidden md:flex space-x-6 items-center">
-                <a href="#features" class="text-white hover:text-green-400 transition-colors duration-300">Features</a>
-                <a href="#services" class="text-white hover:text-green-400 transition-colors duration-300">Services</a>
-                <a href="#shop" class="text-white hover:text-green-400 transition-colors duration-300">Shop</a>
-                <a href="#about" class="text-white hover:text-green-400 transition-colors duration-300">About</a>
-                <button class="neon-button px-4 py-2 rounded-full orbitron text-sm">
-                    Get Started
-                </button>
-            </div>
-            
-            <div class="md:hidden">
-                <button id="mobile-menu-button" class="text-white focus:outline-none">
-                    <i class="fas fa-bars text-2xl"></i>
-                </button>
-            </div>
+      <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+        <div class="flex items-center">
+          <div class="text-2xl md:text-3xl font-bold orbitron neon-text">
+            <i class="fas fa-cannabis mr-2"></i>GanjaGuru
+          </div>
         </div>
-        
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="md:hidden hidden bg-black bg-opacity-95 border-b border-green-500 border-opacity-30">
-            <div class="container mx-auto px-4 py-3 flex flex-col space-y-3">
-                <a href="#features" class="text-white hover:text-green-400 transition-colors duration-300 py-2">Features</a>
-                <a href="#services" class="text-white hover:text-green-400 transition-colors duration-300 py-2">Services</a>
-                <a href="#shop" class="text-white hover:text-green-400 transition-colors duration-300 py-2">Shop</a>
-                <a href="#about" class="text-white hover:text-green-400 transition-colors duration-300 py-2">About</a>
-                <button class="neon-button px-4 py-2 rounded-full orbitron text-sm self-start">
-                    Get Started
-                </button>
-            </div>
+        <div class="hidden md:flex space-x-6 items-center">
+          <a href="#features" class="text-white hover:text-green-400 transition-colors duration-300">Features</a>
+          <a href="#services" class="text-white hover:text-green-400 transition-colors duration-300">Services</a>
+          <a href="#shop" class="text-white hover:text-green-400 transition-colors duration-300">Shop</a>
+          <a href="#about" class="text-white hover:text-green-400 transition-colors duration-300">About</a>
+          <button class="neon-button px-4 py-2 rounded-full orbitron text-sm"> Get Started </button>
         </div>
+        <div class="md:hidden">
+          <button id="mobile-menu-button" class="text-white focus:outline-none">
+            <i class="fas fa-bars text-2xl"></i>
+          </button>
+        </div>
+      </div>
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="md:hidden hidden bg-black bg-opacity-95 border-b border-green-500 border-opacity-30">
+        <div class="container mx-auto px-4 py-3 flex flex-col space-y-3">
+          <a href="#features" class="text-white hover:text-green-400 transition-colors duration-300 py-2">Features</a>
+          <a href="#services" class="text-white hover:text-green-400 transition-colors duration-300 py-2">Services</a>
+          <a href="#shop" class="text-white hover:text-green-400 transition-colors duration-300 py-2">Shop</a>
+          <a href="#about" class="text-white hover:text-green-400 transition-colors duration-300 py-2">About</a>
+          <button class="neon-button px-4 py-2 rounded-full orbitron text-sm self-start"> Get Started </button>
+        </div>
+      </div>
     </nav>
-
     <!-- Hero Section -->
     <section class="min-h-screen pt-20 flex flex-col items-center justify-center text-center px-4 relative overflow-hidden">
-        <div class="absolute inset-0 bg-black bg-opacity-60 z-0"></div>
-        
-        <div class="container mx-auto z-10 flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16">
-            <div class="md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left">
-                <h1 class="text-4xl md:text-6xl font-bold orbitron mb-4 neon-text">
-                    Welcome to<br>The GanjaGuru
-                </h1>
-                <p class="text-xl md:text-2xl mb-6 text-gray-300 max-w-2xl">
-                    From Seed to Smoke, We've Got You Covered—Eco-Friendly, Tech-Driven, and Always Lit.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <button class="neon-button px-6 py-3 rounded-full orbitron text-base sm:text-lg">
-                        Start Your Cannabis Journey
-                    </button>
-                    <button class="px-6 py-3 rounded-full orbitron text-base sm:text-lg bg-white bg-opacity-10 hover:bg-opacity-20 transition duration-300">
-                        Explore Features
-                    </button>
-                </div>
-            </div>
-            
-            <div class="md:w-1/2 flex justify-center">
-                <div class="avatar-container relative">
-                    <!-- Avatar Container -->
-                    <div class="w-64 h-64 md:w-80 md:h-80 relative">
-                        <!-- Cannabis Avatar (Placeholder for now) -->
-                        <div class="absolute inset-0 bg-gradient-to-b from-cannabisGreen to-cannabisDark rounded-full overflow-hidden border-4 border-green-600 glow flex items-center justify-center">
-                            <div class="w-full h-full relative">
-                                <!-- Avatar Body - Create using gradients to represent a cannabis character -->
-                                <div class="absolute inset-0 bg-gradient-to-b from-green-700 to-green-900 rounded-full"></div>
-                                
-                                <!-- Avatar Face Elements -->
-                                <div class="absolute inset-0 flex flex-col items-center justify-center">
-                                    <!-- Eyes -->
-                                    <div class="flex space-x-8 mb-2">
-                                        <div class="w-6 h-6 rounded-full bg-amber-300 glow border-2 border-amber-400 relative">
-                                            <div class="absolute inset-0 flex items-center justify-center">
-                                                <div class="w-3 h-3 rounded-full bg-black"></div>
-                                            </div>
-                                        </div>
-                                        <div class="w-6 h-6 rounded-full bg-amber-300 glow border-2 border-amber-400 relative">
-                                            <div class="absolute inset-0 flex items-center justify-center">
-                                                <div class="w-3 h-3 rounded-full bg-black"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- Mouth -->
-                                    <div class="w-16 h-6 bg-red-900 rounded-full mt-2 flex items-center justify-center relative">
-                                        <div class="w-12 h-3 bg-red-700 rounded-full"></div>
-                                        
-                                        <!-- Joint/Blunt -->
-                                        <div class="absolute -right-8 top-1/2 transform -translate-y-1/2 w-12 h-2 bg-white rotate-12 rounded-full">
-                                            <div class="absolute right-0 w-2 h-2 bg-orange-500 rounded-full glow" id="joint-tip"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <!-- Cannabis Leaves Crown -->
-                                <div class="absolute -top-4 left-0 right-0 flex justify-center">
-                                    <div class="w-40 h-20 relative">
-                                        <!-- Center Leaf -->
-                                        <div class="absolute left-1/2 top-0 transform -translate-x-1/2 w-10 h-16 bg-gradient-to-t from-green-800 to-green-600 rounded-t-full rotate-0"></div>
-                                        <!-- Left Leaves -->
-                                        <div class="absolute left-4 top-2 transform -rotate-30 w-8 h-14 bg-gradient-to-t from-green-800 to-green-600 rounded-t-full"></div>
-                                        <div class="absolute left-0 top-5 transform -rotate-60 w-8 h-12 bg-gradient-to-t from-green-800 to-green-600 rounded-t-full"></div>
-                                        <!-- Right Leaves -->
-                                        <div class="absolute right-4 top-2 transform rotate-30 w-8 h-14 bg-gradient-to-t from-green-800 to-green-600 rounded-t-full"></div>
-                                        <div class="absolute right-0 top-5 transform rotate-60 w-8 h-12 bg-gradient-to-t from-green-800 to-green-600 rounded-t-full"></div>
-                                    </div>
-                                </div>
-                                
-                                <!-- Trichomes/Sparkles -->
-                                <div class="absolute inset-0 rounded-full">
-                                    <div class="w-2 h-2 bg-white rounded-full absolute top-1/4 left-1/4 opacity-80"></div>
-                                    <div class="w-1 h-1 bg-white rounded-full absolute top-3/4 left-1/3 opacity-70"></div>
-                                    <div class="w-2 h-2 bg-white rounded-full absolute top-1/3 right-1/4 opacity-80"></div>
-                                    <div class="w-1 h-1 bg-white rounded-full absolute top-2/3 right-1/3 opacity-70"></div>
-                                </div>
-                            </div>
+      <div class="absolute inset-0 bg-black bg-opacity-60 z-0"></div>
+      <div class="container mx-auto z-10 flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16">
+        <div class="md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left">
+          <h1 class="text-4xl md:text-6xl font-bold orbitron mb-4 neon-text"> Welcome to <br>The GanjaGuru </h1>
+          <p class="text-xl md:text-2xl mb-6 text-gray-300 max-w-2xl"> From Seed to Smoke, We've Got You Covered—Eco-Friendly, Tech-Driven, and Always Lit. </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <button class="neon-button px-6 py-3 rounded-full orbitron text-base sm:text-lg"> Start Your Cannabis Journey </button>
+            <button class="px-6 py-3 rounded-full orbitron text-base sm:text-lg bg-white bg-opacity-10 hover:bg-opacity-20 transition duration-300"> Explore Features </button>
+          </div>
+        </div>
+        <div class="md:w-1/2 flex justify-center">
+          <div class="avatar-container relative">
+            <!-- Avatar Container -->
+            <div class="w-64 h-64 md:w-80 md:h-80 relative">
+              <!-- Cannabis Avatar (Placeholder for now) -->
+              <div class="absolute inset-0 bg-gradient-to-b from-cannabisGreen to-cannabisDark rounded-full overflow-hidden border-4 border-green-600 glow flex items-center justify-center">
+                <div class="w-full h-full relative">
+                  <!-- Avatar Body - Create using gradients to represent a cannabis character -->
+                  <div class="absolute inset-0 bg-gradient-to-b from-green-700 to-green-900 rounded-full"></div>
+                  <!-- Avatar Face Elements -->
+                  <div class="absolute inset-0 flex flex-col items-center justify-center">
+                    <!-- Eyes -->
+                    <div class="flex space-x-8 mb-2">
+                      <div class="w-6 h-6 rounded-full bg-amber-300 glow border-2 border-amber-400 relative">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                          <div class="w-3 h-3 rounded-full bg-black"></div>
                         </div>
-                        
-                        <!-- Smoke Effects Container -->
-                        <div id="smoke-container" class="absolute top-1/2 right-0 transform translate-x-8 -translate-y-1/2 w-20 h-40 pointer-events-none"></div>
+                      </div>
+                      <div class="w-6 h-6 rounded-full bg-amber-300 glow border-2 border-amber-400 relative">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                          <div class="w-3 h-3 rounded-full bg-black"></div>
+                        </div>
+                      </div>
                     </div>
+                    <!-- Mouth -->
+                    <div class="w-16 h-6 bg-red-900 rounded-full mt-2 flex items-center justify-center relative">
+                      <div class="w-12 h-3 bg-red-700 rounded-full"></div>
+                      <!-- Joint/Blunt -->
+                      <div class="absolute -right-8 top-1/2 transform -translate-y-1/2 w-12 h-2 bg-white rotate-12 rounded-full">
+                        <div class="absolute right-0 w-2 h-2 bg-orange-500 rounded-full glow" id="joint-tip"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Cannabis Leaves Crown -->
+                  <div class="absolute -top-4 left-0 right-0 flex justify-center">
+                    <div class="w-40 h-20 relative">
+                      <!-- Center Leaf -->
+                      <div class="absolute left-1/2 top-0 transform -translate-x-1/2 w-10 h-16 bg-gradient-to-t from-green-800 to-green-600 rounded-t-full rotate-0"></div>
+                      <!-- Left Leaves -->
+                      <div class="absolute left-4 top-2 transform -rotate-30 w-8 h-14 bg-gradient-to-t from-green-800 to-green-600 rounded-t-full"></div>
+                      <div class="absolute left-0 top-5 transform -rotate-60 w-8 h-12 bg-gradient-to-t from-green-800 to-green-600 rounded-t-full"></div>
+                      <!-- Right Leaves -->
+                      <div class="absolute right-4 top-2 transform rotate-30 w-8 h-14 bg-gradient-to-t from-green-800 to-green-600 rounded-t-full"></div>
+                      <div class="absolute right-0 top-5 transform rotate-60 w-8 h-12 bg-gradient-to-t from-green-800 to-green-600 rounded-t-full"></div>
+                    </div>
+                  </div>
+                  <!-- Trichomes/Sparkles -->
+                  <div class="absolute inset-0 rounded-full">
+                    <div class="w-2 h-2 bg-white rounded-full absolute top-1/4 left-1/4 opacity-80"></div>
+                    <div class="w-1 h-1 bg-white rounded-full absolute top-3/4 left-1/3 opacity-70"></div>
+                    <div class="w-2 h-2 bg-white rounded-full absolute top-1/3 right-1/4 opacity-80"></div>
+                    <div class="w-1 h-1 bg-white rounded-full absolute top-2/3 right-1/3 opacity-70"></div>
+                  </div>
                 </div>
+              </div>
+              <!-- Smoke Effects Container -->
+              <div id="smoke-container" class="absolute top-1/2 right-0 transform translate-x-8 -translate-y-1/2 w-20 h-40 pointer-events-none"></div>
             </div>
+          </div>
         </div>
-        
-        <!-- Scroll Down Indicator -->
-        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center">
-            <span class="text-white text-sm mb-2">Scroll Down</span>
-            <div class="w-6 h-10 border-2 border-white rounded-full flex justify-center">
-                <div class="w-2 h-2 bg-white rounded-full mt-2 animate-bounce"></div>
-            </div>
+      </div>
+      <!-- Scroll Down Indicator -->
+      <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center">
+        <span class="text-white text-sm mb-2">Scroll Down</span>
+        <div class="w-6 h-10 border-2 border-white rounded-full flex justify-center">
+          <div class="w-2 h-2 bg-white rounded-full mt-2 animate-bounce"></div>
         </div>
+      </div>
     </section>
-<section id="onboarding" class="py-16 px-4 bg-gradient-to-r from-green-800 to-black text-center text-white">
-    <h2 class="text-3xl md:text-4xl font-bold orbitron neon-text mb-6">Get Started with GanjaGuru</h2>
-    <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
-        Start your journey from seed to smoke with our easy onboarding process. Join our community and elevate your cannabis hustle.
-    </p>
-    <div class="flex flex-col sm:flex-row justify-center gap-4">
+    <section id="onboarding" class="py-16 px-4 bg-gradient-to-r from-green-800 to-black text-center text-white">
+      <h2 class="text-3xl md:text-4xl font-bold orbitron neon-text mb-6">Get Started with GanjaGuru</h2>
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8"> Start your journey from seed to smoke with our easy onboarding process. Join our community and elevate your cannabis hustle. </p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
         <button class="neon-button px-8 py-4 rounded-full orbitron text-lg">Sign Up Now</button>
-        <button class="px-8 py-4 rounded-full orbitron text-lg bg-white text-green-900 hover:bg-gray-200 transition duration-300">
-            Learn More
-        </button>
-    </div>
-</section>
+        <button class="px-8 py-4 rounded-full orbitron text-lg bg-white text-green-900 hover:bg-gray-200 transition duration-300"> Learn More </button>
+      </div>
+    </section>
     <section id="account" class="py-16 px-4 bg-gradient-to-bl from-black to-green-800 text-center text-white">
-    <h2 class="text-3xl md:text-4xl font-bold orbitron neon-text mb-6">Manage Your Account</h2>
-    <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
-        Update your details, check your orders, and stay in control of your cannabis empire.
-    </p>
-    <div class="flex flex-col sm:flex-row justify-center gap-4">
+      <h2 class="text-3xl md:text-4xl font-bold orbitron neon-text mb-6">Manage Your Account</h2>
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8"> Update your details, check your orders, and stay in control of your cannabis empire. </p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
         <a href="/login" class="neon-button px-8 py-4 rounded-full orbitron text-lg">Log In</a>
-        <a href="/signup" class="px-8 py-4 rounded-full orbitron text-lg bg-white text-green-900 hover:bg-gray-200 transition duration-300">
-            Create Account
-        </a>
-    </div>
-</section>
+        <a href="/signup" class="px-8 py-4 rounded-full orbitron text-lg bg-white text-green-900 hover:bg-gray-200 transition duration-300"> Create Account </a>
+      </div>
+    </section>
     <section id="download" class="py-16 px-4 bg-gradient-to-r from-green-700 to-purple-700 text-center text-white">
-    <h2 class="text-3xl md:text-4xl font-bold orbitron neon-text mb-6">Download & Install</h2>
-    <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
-        Get the GanjaGuru app for your device and manage your hustle on the go.
-    </p>
-    <div class="flex flex-col sm:flex-row justify-center gap-4">
+      <h2 class="text-3xl md:text-4xl font-bold orbitron neon-text mb-6">Download & Install</h2>
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8"> Get the GanjaGuru app for your device and manage your hustle on the go. </p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
         <a href="/download/android" class="neon-button px-8 py-4 rounded-full orbitron text-lg">Download for Android</a>
-        <a href="/download/ios" class="px-8 py-4 rounded-full orbitron text-lg bg-white text-green-900 hover:bg-gray-200 transition duration-300">
-            Download for iOS
-        </a>
-    </div>
-</section>
+        <a href="/download/ios" class="px-8 py-4 rounded-full orbitron text-lg bg-white text-green-900 hover:bg-gray-200 transition duration-300"> Download for iOS </a>
+      </div>
+    </section>
     <section id="about" class="py-16 px-4 bg-gradient-to-t from-black to-green-900 text-center text-white">
-    <h2 class="text-3xl md:text-4xl font-bold orbitron neon-text mb-6">About GanjaGuru</h2>
-    <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
-        At GanjaGuru, we combine technology, sustainability, and passion to revolutionize the cannabis industry. From seed to smoke, we’ve got you covered.
-    </p>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold orbitron neon-text mb-6">About GanjaGuru</h2>
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8"> At GanjaGuru, we combine technology, sustainability, and passion to revolutionize the cannabis industry. From seed to smoke, we’ve got you covered. </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
         <div class="glass-card p-6">
-            <h3 class="text-2xl font-bold mb-2">Our Mission</h3>
-            <p class="text-gray-300">
-                Empowering ganjapreneurs with the tools and knowledge to grow smarter, sell better, and live greener.
-            </p>
+          <h3 class="text-2xl font-bold mb-2">Our Mission</h3>
+          <p class="text-gray-300"> Empowering ganjapreneurs with the tools and knowledge to grow smarter, sell better, and live greener. </p>
         </div>
         <div class="glass-card p-6">
-            <h3 class="text-2xl font-bold mb-2">Our Vision</h3>
-            <p class="text-gray-300">
-                To be the world’s leading cannabis ecosystem, connecting growers, sellers, and enthusiasts globally.
-            </p>
+          <h3 class="text-2xl font-bold mb-2">Our Vision</h3>
+          <p class="text-gray-300"> To be the world’s leading cannabis ecosystem, connecting growers, sellers, and enthusiasts globally. </p>
         </div>
-    </div>
-</section>
-    
+      </div>
+    </section>
     <!-- Features Section -->
     <section id="features" class="py-16 px-4">
-        <div class="container mx-auto">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold orbitron neon-text mb-4">Revolutionary Features</h2>
-                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
-                    Your One-Stop Cannabis Ecosystem: Design, Grow, Sell, and Smoke with Ease.
-                </p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Feature Card 1 -->
-                <div class="feature-card glass-card p-6 relative overflow-hidden group">
-                    <div class="absolute inset-0 bg-gradient-to-br from-green-900 to-purple-900 opacity-30 group-hover:opacity-40 transition-opacity duration-300"></div>
-                    <div class="relative z-10">
-                        <div class="w-16 h-16 rounded-full bg-gradient-to-r from-green-500 to-green-700 flex items-center justify-center mb-4 mx-auto">
-                            <i class="fas fa-robot text-2xl text-white"></i>
-                        </div>
-                        <h3 class="text-xl font-bold orbitron text-center mb-3">AI-Powered Budtender</h3>
-                        <p class="text-gray-300 text-center">
-                            Our advanced AI recommends strains, products, and growing tips personalized to your preferences.
-                        </p>
-                        <div class="mt-6 text-center">
-                            <button class="text-green-400 hover:text-green-300 transition-colors duration-300 font-medium">
-                                Learn More <i class="fas fa-arrow-right ml-1"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Feature Card 2 -->
-                <div class="feature-card glass-card p-6 relative overflow-hidden group">
-                    <div class="absolute inset-0 bg-gradient-to-br from-green-900 to-blue-900 opacity-30 group-hover:opacity-40 transition-opacity duration-300"></div>
-                    <div class="relative z-10">
-                        <div class="w-16 h-16 rounded-full bg-gradient-to-r from-green-500 to-blue-500 flex items-center justify-center mb-4 mx-auto">
-                            <i class="fas fa-vr-cardboard text-2xl text-white"></i>
-                        </div>
-                        <h3 class="text-xl font-bold orbitron text-center mb-3">AR/VR Grow Room Design</h3>
-                        <p class="text-gray-300 text-center">
-                            Design and visualize your perfect grow room in immersive 3D virtual reality.
-                        </p>
-                        <div class="mt-6 text-center">
-                            <button class="text-green-400 hover:text-green-300 transition-colors duration-300 font-medium">
-                                Learn More <i class="fas fa-arrow-right ml-1"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Feature Card 3 -->
-                <div class="feature-card glass-card p-6 relative overflow-hidden group">
-                    <div class="absolute inset-0 bg-gradient-to-br from-green-900 to-amber-900 opacity-30 group-hover:opacity-40 transition-opacity duration-300"></div>
-                    <div class="relative z-10">
-                        <div class="w-16 h-16 rounded-full bg-gradient-to-r from-green-500 to-amber-500 flex items-center justify-center mb-4 mx-auto">
-                            <i class="fas fa-print text-2xl text-white"></i>
-                        </div>
-                        <h3 class="text-xl font-bold orbitron text-center mb-3">3D Print on Demand</h3>
-                        <p class="text-gray-300 text-center">
-                            Create custom bongs, pipes, and accessories with our 3D printing service.
-                        </p>
-                        <div class="mt-6 text-center">
-                            <button class="text-green-400 hover:text-green-300 transition-colors duration-300 font-medium">
-                                Learn More <i class="fas fa-arrow-right ml-1"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Feature Card 4 -->
-                <div class="feature-card glass-card p-6 relative overflow-hidden group">
-                    <div class="absolute inset-0 bg-gradient-to-br from-green-900 to-red-900 opacity-30 group-hover:opacity-40 transition-opacity duration-300"></div>
-                    <div class="relative z-10">
-                        <div class="w-16 h-16 rounded-full bg-gradient-to-r from-green-500 to-red-500 flex items-center justify-center mb-4 mx-auto">
-                            <i class="fas fa-truck text-2xl text-white"></i>
-                        </div>
-                        <h3 class="text-xl font-bold orbitron text-center mb-3">On-Demand Delivery</h3>
-                        <p class="text-gray-300 text-center">
-                            Get your products delivered 24/7 with real-time tracking and automated fulfillment.
-                        </p>
-                        <div class="mt-6 text-center">
-                            <button class="text-green-400 hover:text-green-300 transition-colors duration-300 font-medium">
-                                Learn More <i class="fas fa-arrow-right ml-1"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Feature Card 5 -->
-                <div class="feature-card glass-card p-6 relative overflow-hidden group">
-                    <div class="absolute inset-0 bg-gradient-to-br from-green-900 to-purple-900 opacity-30 group-hover:opacity-40 transition-opacity duration-300"></div>
-                    <div class="relative z-10">
-                        <div class="w-16 h-16 rounded-full bg-gradient-to-r from-green-500 to-purple-500 flex items-center justify-center mb-4 mx-auto">
-                            <i class="fas fa-wifi text-2xl text-white"></i>
-                        </div>
-                        <h3 class="text-xl font-bold orbitron text-center mb-3">Smart Home Integration</h3>
-                        <p class="text-gray-300 text-center">
-                            Connect your grow room to IoT devices for real-time monitoring and automation.
-                        </p>
-                        <div class="mt-6 text-center">
-                            <button class="text-green-400 hover:text-green-300 transition-colors duration-300 font-medium">
-                                Learn More <i class="fas fa-arrow-right ml-1"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Feature Card 6 -->
-                <div class="feature-card glass-card p-6 relative overflow-hidden group">
-                    <div class="absolute inset-0 bg-gradient-to-br from-green-900 to-yellow-900 opacity-30 group-hover:opacity-40 transition-opacity duration-300"></div>
-                    <div class="relative z-10">
-                        <div class="w-16 h-16 rounded-full bg-gradient-to-r from-green-500 to-yellow-500 flex items-center justify-center mb-4 mx-auto">
-                            <i class="fas fa-gamepad text-2xl text-white"></i>
-                        </div>
-                        <h3 class="text-xl font-bold orbitron text-center mb-3">Gamification</h3>
-                        <p class="text-gray-300 text-center">
-                            Earn points, badges, and rewards as you explore and use our platform.
-                        </p>
-                        <div class="mt-6 text-center">
-                            <button class="text-green-400 hover:text-green-300 transition-colors duration-300 font-medium">
-                                Learn More <i class="fas fa-arrow-right ml-1"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <div class="container mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold orbitron neon-text mb-4">Revolutionary Features</h2>
+          <p class="text-xl text-gray-300 max-w-3xl mx-auto"> Your One-Stop Cannabis Ecosystem: Design, Grow, Sell, and Smoke with Ease. </p>
         </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Feature Card 1 -->
+          <div class="feature-card glass-card p-6 relative overflow-hidden group">
+            <div class="absolute inset-0 bg-gradient-to-br from-green-900 to-purple-900 opacity-30 group-hover:opacity-40 transition-opacity duration-300"></div>
+            <div class="relative z-10">
+              <div class="w-16 h-16 rounded-full bg-gradient-to-r from-green-500 to-green-700 flex items-center justify-center mb-4 mx-auto">
+                <i class="fas fa-robot text-2xl text-white"></i>
+              </div>
+              <h3 class="text-xl font-bold orbitron text-center mb-3">AI-Powered Budtender</h3>
+              <p class="text-gray-300 text-center"> Our advanced AI recommends strains, products, and growing tips personalized to your preferences. </p>
+              <div class="mt-6 text-center">
+                <button class="text-green-400 hover:text-green-300 transition-colors duration-300 font-medium"> Learn More <i class="fas fa-arrow-right ml-1"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Feature Card 2 -->
+          <div class="feature-card glass-card p-6 relative overflow-hidden group">
+            <div class="absolute inset-0 bg-gradient-to-br from-green-900 to-blue-900 opacity-30 group-hover:opacity-40 transition-opacity duration-300"></div>
+            <div class="relative z-10">
+              <div class="w-16 h-16 rounded-full bg-gradient-to-r from-green-500 to-blue-500 flex items-center justify-center mb-4 mx-auto">
+                <i class="fas fa-vr-cardboard text-2xl text-white"></i>
+              </div>
+              <h3 class="text-xl font-bold orbitron text-center mb-3">AR/VR Grow Room Design</h3>
+              <p class="text-gray-300 text-center"> Design and visualize your perfect grow room in immersive 3D virtual reality. </p>
+              <div class="mt-6 text-center">
+                <button class="text-green-400 hover:text-green-300 transition-colors duration-300 font-medium"> Learn More <i class="fas fa-arrow-right ml-1"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Feature Card 3 -->
+          <div class="feature-card glass-card p-6 relative overflow-hidden group">
+            <div class="absolute inset-0 bg-gradient-to-br from-green-900 to-amber-900 opacity-30 group-hover:opacity-40 transition-opacity duration-300"></div>
+            <div class="relative z-10">
+              <div class="w-16 h-16 rounded-full bg-gradient-to-r from-green-500 to-amber-500 flex items-center justify-center mb-4 mx-auto">
+                <i class="fas fa-print text-2xl text-white"></i>
+              </div>
+              <h3 class="text-xl font-bold orbitron text-center mb-3">3D Print on Demand</h3>
+              <p class="text-gray-300 text-center"> Create custom bongs, pipes, and accessories with our 3D printing service. </p>
+              <div class="mt-6 text-center">
+                <button class="text-green-400 hover:text-green-300 transition-colors duration-300 font-medium"> Learn More <i class="fas fa-arrow-right ml-1"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Feature Card 4 -->
+          <div class="feature-card glass-card p-6 relative overflow-hidden group">
+            <div class="absolute inset-0 bg-gradient-to-br from-green-900 to-red-900 opacity-30 group-hover:opacity-40 transition-opacity duration-300"></div>
+            <div class="relative z-10">
+              <div class="w-16 h-16 rounded-full bg-gradient-to-r from-green-500 to-red-500 flex items-center justify-center mb-4 mx-auto">
+                <i class="fas fa-truck text-2xl text-white"></i>
+              </div>
+              <h3 class="text-xl font-bold orbitron text-center mb-3">On-Demand Delivery</h3>
+              <p class="text-gray-300 text-center"> Get your products delivered 24/7 with real-time tracking and automated fulfillment. </p>
+              <div class="mt-6 text-center">
+                <button class="text-green-400 hover:text-green-300 transition-colors duration-300 font-medium"> Learn More <i class="fas fa-arrow-right ml-1"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Feature Card 5 -->
+          <div class="feature-card glass-card p-6 relative overflow-hidden group">
+            <div class="absolute inset-0 bg-gradient-to-br from-green-900 to-purple-900 opacity-30 group-hover:opacity-40 transition-opacity duration-300"></div>
+            <div class="relative z-10">
+              <div class="w-16 h-16 rounded-full bg-gradient-to-r from-green-500 to-purple-500 flex items-center justify-center mb-4 mx-auto">
+                <i class="fas fa-wifi text-2xl text-white"></i>
+              </div>
+              <h3 class="text-xl font-bold orbitron text-center mb-3">Smart Home Integration</h3>
+              <p class="text-gray-300 text-center"> Connect your grow room to IoT devices for real-time monitoring and automation. </p>
+              <div class="mt-6 text-center">
+                <button class="text-green-400 hover:text-green-300 transition-colors duration-300 font-medium"> Learn More <i class="fas fa-arrow-right ml-1"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Feature Card 6 -->
+          <div class="feature-card glass-card p-6 relative overflow-hidden group">
+            <div class="absolute inset-0 bg-gradient-to-br from-green-900 to-yellow-900 opacity-30 group-hover:opacity-40 transition-opacity duration-300"></div>
+            <div class="relative z-10">
+              <div class="w-16 h-16 rounded-full bg-gradient-to-r from-green-500 to-yellow-500 flex items-center justify-center mb-4 mx-auto">
+                <i class="fas fa-gamepad text-2xl text-white"></i>
+              </div>
+              <h3 class="text-xl font-bold orbitron text-center mb-3">Gamification</h3>
+              <p class="text-gray-300 text-center"> Earn points, badges, and rewards as you explore and use our platform. </p>
+              <div class="mt-6 text-center">
+                <button class="text-green-400 hover:text-green-300 transition-colors duration-300 font-medium"> Learn More <i class="fas fa-arrow-right ml-1"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
-<section id="what-we-do" class="py-16 px-4 bg-gradient-to-bl from-black to-green-900 text-center text-white">
-    <h2 class="text-3xl md:text-4xl font-bold orbitron neon-text mb-6">What We Do</h2>
-    <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
-        At GanjaGuru, we combine innovation and passion to revolutionize the cannabis industry. Here’s how we make it happen:
-    </p>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <section id="what-we-do" class="py-16 px-4 bg-gradient-to-bl from-black to-green-900 text-center text-white">
+      <h2 class="text-3xl md:text-4xl font-bold orbitron neon-text mb-6">What We Do</h2>
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8"> At GanjaGuru, we combine innovation and passion to revolutionize the cannabis industry. Here’s how we make it happen: </p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <div class="glass-card p-6">
-            <h3 class="text-xl font-bold mb-4">Grow Room Design</h3>
-            <p class="text-gray-300">Custom grow room designs tailored to your needs.</p>
+          <h3 class="text-xl font-bold mb-4">Grow Room Design</h3>
+          <p class="text-gray-300">Custom grow room designs tailored to your needs.</p>
         </div>
         <div class="glass-card p-6">
-            <h3 class="text-xl font-bold mb-4">3D Printing Services</h3>
-            <p class="text-gray-300">Get custom cannabis accessories printed on demand.</p>
+          <h3 class="text-xl font-bold mb-4">3D Printing Services</h3>
+          <p class="text-gray-300">Get custom cannabis accessories printed on demand.</p>
         </div>
         <div class="glass-card p-6">
-            <h3 class="text-xl font-bold mb-4">AI-Powered Insights</h3>
-            <p class="text-gray-300">Leverage cutting-edge AI for strain recommendations and growing tips.</p>
+          <h3 class="text-xl font-bold mb-4">AI-Powered Insights</h3>
+          <p class="text-gray-300">Leverage cutting-edge AI for strain recommendations and growing tips.</p>
         </div>
-    </div>
-</section>    
-<section id="booking" class="py-16 px-4 bg-gradient-to-br from-green-900 to-blue-900 text-center text-white">
-    <h2 class="text-3xl md:text-4xl font-bold orbitron neon-text mb-6">Book a Consultation</h2>
-    <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
-        Need expert advice? Schedule a one-on-one session with our cannabis consultants. It's quick and easy.
-    </p>
-    <form class="glass-card mx-auto p-6 max-w-lg">
+      </div>
+    </section>
+    <section id="booking" class="py-16 px-4 bg-gradient-to-br from-green-900 to-blue-900 text-center text-white">
+      <h2 class="text-3xl md:text-4xl font-bold orbitron neon-text mb-6">Book a Consultation</h2>
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8"> Need expert advice? Schedule a one-on-one session with our cannabis consultants. It's quick and easy. </p>
+      <form class="glass-card mx-auto p-6 max-w-lg">
         <label for="name" class="block text-left text-gray-300 mb-2">Name</label>
         <input type="text" id="name" class="w-full bg-black bg-opacity-50 border border-green-700 rounded px-4 py-3 text-white mb-4">
-
         <label for="date" class="block text-left text-gray-300 mb-2">Select Date</label>
         <input type="date" id="date" class="w-full bg-black bg-opacity-50 border border-green-700 rounded px-4 py-3 text-white mb-4">
-
         <label for="time" class="block text-left text-gray-300 mb-2">Select Time</label>
         <input type="time" id="time" class="w-full bg-black bg-opacity-50 border border-green-700 rounded px-4 py-3 text-white mb-4">
-
         <button type="submit" class="neon-button px-6 py-3 rounded-full w-full">Book Now</button>
-    </form>
-</section>    
-<section id="ai-ml" class="py-16 px-4 bg-gradient-to-br from-black to-green-900 text-center">
-    <h2 class="text-3xl md:text-4xl font-bold orbitron neon-text mb-6">AI-Powered Insights</h2>
-    <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
-        Experience next-level recommendations powered by AI. Whether it's strain selection, growing tips, or market analysis—our AI has your back.
-    </p>
-    <div id="ai-demo" class="glass-card mx-auto p-8 max-w-2xl">
+      </form>
+    </section>
+    <section id="ai-ml" class="py-16 px-4 bg-gradient-to-br from-black to-green-900 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold orbitron neon-text mb-6">AI-Powered Insights</h2>
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8"> Experience next-level recommendations powered by AI. Whether it's strain selection, growing tips, or market analysis—our AI has your back. </p>
+      <div id="ai-demo" class="glass-card mx-auto p-8 max-w-2xl">
         <p class="text-left text-white">Ask me anything about cannabis cultivation, strains, or industry trends:</p>
         <form id="ai-form" class="mt-4">
-            <input 
-                type="text" 
-                id="ai-input" 
-                class="w-full bg-black bg-opacity-50 border border-green-700 rounded-full px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-green-500 text-base"
-                placeholder="What's the best strain for relaxation?"
-            >
-            <button type="submit" class="neon-button mt-4 px-6 py-3 rounded-full w-full">
-                Get AI Insight
-            </button>
+          <input type="text" id="ai-input" class="w-full bg-black bg-opacity-50 border border-green-700 rounded-full px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-green-500 text-base" placeholder="What's the best strain for relaxation?">
+          <button type="submit" class="neon-button mt-4 px-6 py-3 rounded-full w-full"> Get AI Insight </button>
         </form>
-    </div>
-</section>
+      </div>
+    </section>
     <section id="ar-vr" class="py-16 px-4 bg-gradient-to-r from-green-900 to-blue-900 text-center text-white">
-    <h2 class="text-3xl md:text-4xl font-bold orbitron neon-text mb-6">AR/VR Grow Room Designer</h2>
-    <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
-        Visualize your perfect grow room in stunning virtual reality. Drag, drop, and design with cutting-edge tools.
-    </p>
-    <a-scene embedded style="height: 500px;">
+      <h2 class="text-3xl md:text-4xl font-bold orbitron neon-text mb-6">AR/VR Grow Room Designer</h2>
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8"> Visualize your perfect grow room in stunning virtual reality. Drag, drop, and design with cutting-edge tools. </p>
+      <a-scene embedded style="height: 500px;">
         <a-box position="0 1 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
         <a-sphere position="-2 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
         <a-cylinder position="1 0.75 -2" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
         <a-plane rotation="-90 0 0" position="0 0 -4" width="10" height="10" color="#7BC8A4"></a-plane>
-    </a-scene>
-</section>
+      </a-scene>
+    </section>
     <!-- Chat with GanjaGuru Section -->
     <section class="py-16 px-4 relative">
-        <div class="absolute inset-0 bg-gradient-to-b from-black to-green-900 opacity-30"></div>
-        
-        <div class="container mx-auto relative z-10">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold orbitron neon-text mb-4">Ask The GanjaGuru</h2>
-                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
-                    Our AI-powered cannabis expert is here to answer all your questions about products, growing, and more.
-                </p>
-            </div>
-            
-            <div class="max-w-3xl mx-auto">
-                <div class="gradient-border">
-                    <div class="bg-black bg-opacity-70 backdrop-filter backdrop-blur-md rounded-xl overflow-hidden">
-                        <!-- Chat Messages Display -->
-                        <div id="chat-messages" class="h-80 overflow-y-auto p-6 space-y-4">
-                            <div class="chat-message flex">
-                                <div class="w-10 h-10 rounded-full bg-gradient-to-r from-green-500 to-green-700 flex-shrink-0 flex items-center justify-center mr-3">
-                                    <i class="fas fa-cannabis text-white"></i>
-                                </div>
-                                <div class="glass-card p-3 rounded-lg rounded-tl-none max-w-[80%]">
-                                    <p class="text-white">Hey there! I'm GanjaGuru, your AI cannabis expert. What would you like to know about cannabis today?</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Chat Input -->
-                        <div class="p-4 border-t border-green-800">
-                            <form id="chat-form" class="flex gap-2">
-                                <input 
-                                    type="text" 
-                                    id="user-input" 
-                                    class="flex-grow bg-black bg-opacity-50 border border-green-700 rounded-full px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-green-500 text-base" 
-                                    placeholder="Ask GanjaGuru anything..."
-                                >
-                                <button type="submit" class="bg-gradient-to-r from-green-600 to-green-800 hover:from-green-500 hover:to-green-700 text-white rounded-full w-12 h-12 flex items-center justify-center transition-colors duration-300">
-                                    <i class="fas fa-paper-plane"></i>
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <div class="absolute inset-0 bg-gradient-to-b from-black to-green-900 opacity-30"></div>
+      <div class="container mx-auto relative z-10">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold orbitron neon-text mb-4">Ask The GanjaGuru</h2>
+          <p class="text-xl text-gray-300 max-w-3xl mx-auto"> Our AI-powered cannabis expert is here to answer all your questions about products, growing, and more. </p>
         </div>
+        <div class="max-w-3xl mx-auto">
+          <div class="gradient-border">
+            <div class="bg-black bg-opacity-70 backdrop-filter backdrop-blur-md rounded-xl overflow-hidden">
+              <!-- Chat Messages Display -->
+              <div id="chat-messages" class="h-80 overflow-y-auto p-6 space-y-4">
+                <div class="chat-message flex">
+                  <div class="w-10 h-10 rounded-full bg-gradient-to-r from-green-500 to-green-700 flex-shrink-0 flex items-center justify-center mr-3">
+                    <i class="fas fa-cannabis text-white"></i>
+                  </div>
+                  <div class="glass-card p-3 rounded-lg rounded-tl-none max-w-[80%]">
+                    <p class="text-white">Hey there! I'm GanjaGuru, your AI cannabis expert. What would you like to know about cannabis today?</p>
+                  </div>
+                </div>
+              </div>
+              <!-- Chat Input -->
+              <div class="p-4 border-t border-green-800">
+                <form id="chat-form" class="flex gap-2">
+                  <input type="text" id="user-input" class="flex-grow bg-black bg-opacity-50 border border-green-700 rounded-full px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-green-500 text-base" placeholder="Ask GanjaGuru anything...">
+                  <button type="submit" class="bg-gradient-to-r from-green-600 to-green-800 hover:from-green-500 hover:to-green-700 text-white rounded-full w-12 h-12 flex items-center justify-center transition-colors duration-300">
+                    <i class="fas fa-paper-plane"></i>
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
-
     <section id="blog" class="py-16 px-4 bg-gradient-to-r from-green-900 to-purple-900 text-center text-white">
-    <h2 class="text-3xl md:text-4xl font-bold orbitron neon-text mb-6">The GanjaGuru Blog</h2>
-    <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
-        Stay updated with the latest trends, tips, and stories in the cannabis world.
-    </p>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <h2 class="text-3xl md:text-4xl font-bold orbitron neon-text mb-6">The GanjaGuru Blog</h2>
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8"> Stay updated with the latest trends, tips, and stories in the cannabis world. </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <!-- Blog Post 1 -->
         <div class="glass-card p-6">
-            <h3 class="text-xl font-bold mb-4">5 Tips for Growing OG Kush</h3>
-            <p class="text-gray-300">Learn the secrets to growing the dankest OG Kush.</p>
-            <a href="#post1" class="neon-button mt-4 px-6 py-3 rounded-full">Read More</a>
+          <h3 class="text-xl font-bold mb-4">5 Tips for Growing OG Kush</h3>
+          <p class="text-gray-300">Learn the secrets to growing the dankest OG Kush.</p>
+          <a href="#post1" class="neon-button mt-4 px-6 py-3 rounded-full">Read More</a>
         </div>
         <!-- Blog Post 2 -->
         <div class="glass-card p-6">
-            <h3 class="text-xl font-bold mb-4">Top 10 Cannabis Strains in 2025</h3>
-            <p class="text-gray-300">Check out the hottest strains to grow and smoke this year.</p>
-            <a href="#post2" class="neon-button mt-4 px-6 py-3 rounded-full">Read More</a>
+          <h3 class="text-xl font-bold mb-4">Top 10 Cannabis Strains in 2025</h3>
+          <p class="text-gray-300">Check out the hottest strains to grow and smoke this year.</p>
+          <a href="#post2" class="neon-button mt-4 px-6 py-3 rounded-full">Read More</a>
         </div>
         <!-- Blog Post 3 -->
         <div class="glass-card p-6">
-            <h3 class="text-xl font-bold mb-4">How AI is Changing the Cannabis Game</h3>
-            <p class="text-gray-300">Discover how AI is helping growers and enthusiasts alike.</p>
-            <a href="#post3" class="neon-button mt-4 px-6 py-3 rounded-full">Read More</a>
+          <h3 class="text-xl font-bold mb-4">How AI is Changing the Cannabis Game</h3>
+          <p class="text-gray-300">Discover how AI is helping growers and enthusiasts alike.</p>
+          <a href="#post3" class="neon-button mt-4 px-6 py-3 rounded-full">Read More</a>
         </div>
-    </div>
-</section>
-    
-<section id="gallery" class="py-16 px-4 bg-gradient-to-r from-green-800 to-blue-900 text-center text-white">
-    <h2 class="text-3xl md:text-4xl font-bold orbitron neon-text mb-6">Gallery: Our Work in Action</h2>
-    <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
-        Explore our projects, products, and the magic we create.
-    </p>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      </div>
+    </section>
+    <section id="gallery" class="py-16 px-4 bg-gradient-to-r from-green-800 to-blue-900 text-center text-white">
+      <h2 class="text-3xl md:text-4xl font-bold orbitron neon-text mb-6">Gallery: Our Work in Action</h2>
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8"> Explore our projects, products, and the magic we create. </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         <img src="https://via.placeholder.com/300" alt="Gallery Image 1" class="rounded-lg">
         <img src="https://via.placeholder.com/300" alt="Gallery Image 2" class="rounded-lg">
         <img src="https://via.placeholder.com/300" alt="Gallery Image 3" class="rounded-lg">
         <img src="https://via.placeholder.com/300" alt="Gallery Image 4" class="rounded-lg">
         <img src="https://via.placeholder.com/300" alt="Gallery Image 5" class="rounded-lg">
         <img src="https://via.placeholder.com/300" alt="Gallery Image 6" class="rounded-lg">
-    </div>
-</section>
-<section id="team" class="py-16 px-4 bg-gradient-to-bl from-green-900 to-black text-center text-white">
-    <h2 class="text-3xl md:text-4xl font-bold orbitron neon-text mb-6">Meet the Dream Team</h2>
-    <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
-        Our passionate team works hard to bring you the ultimate seed-to-smoke experience.
-    </p>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      </div>
+    </section>
+    <section id="team" class="py-16 px-4 bg-gradient-to-bl from-green-900 to-black text-center text-white">
+      <h2 class="text-3xl md:text-4xl font-bold orbitron neon-text mb-6">Meet the Dream Team</h2>
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8"> Our passionate team works hard to bring you the ultimate seed-to-smoke experience. </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         <!-- Team Member 1 -->
         <div class="glass-card p-6">
-            <img src="https://via.placeholder.com/150" alt="Team Member 1" class="w-32 h-32 mx-auto rounded-full mb-4">
-            <h3 class="text-xl font-bold">Jane Doe</h3>
-            <p class="text-gray-300">CEO & Founder</p>
+          <img src="https://via.placeholder.com/150" alt="Team Member 1" class="w-32 h-32 mx-auto rounded-full mb-4">
+          <h3 class="text-xl font-bold">Jane Doe</h3>
+          <p class="text-gray-300">CEO & Founder</p>
         </div>
         <!-- Team Member 2 -->
         <div class="glass-card p-6">
-            <img src="https://via.placeholder.com/150" alt="Team Member 2" class="w-32 h-32 mx-auto rounded-full mb-4">
-            <h3 class="text-xl font-bold">John Blaze</h3>
-            <p class="text-gray-300">Chief Grow Designer</p>
+          <img src="https://via.placeholder.com/150" alt="Team Member 2" class="w-32 h-32 mx-auto rounded-full mb-4">
+          <h3 class="text-xl font-bold">John Blaze</h3>
+          <p class="text-gray-300">Chief Grow Designer</p>
         </div>
         <!-- Team Member 3 -->
         <div class="glass-card p-6">
-            <img src="https://via.placeholder.com/150" alt="Team Member 3" class="w-32 h-32 mx-auto rounded-full mb-4">
-            <h3 class="text-xl font-bold">Mary Green</h3>
-            <p class="text-gray-300">Cannabis Consultant</p>
+          <img src="https://via.placeholder.com/150" alt="Team Member 3" class="w-32 h-32 mx-auto rounded-full mb-4">
+          <h3 class="text-xl font-bold">Mary Green</h3>
+          <p class="text-gray-300">Cannabis Consultant</p>
         </div>
         <!-- Team Member 4 -->
         <div class="glass-card p-6">
-            <img src="https://via.placeholder.com/150" alt="Team Member 4" class="w-32 h-32 mx-auto rounded-full mb-4">
-            <h3 class="text-xl font-bold">Tommy High</h3>
-            <p class="text-gray-300">Tech Wizard</p>
+          <img src="https://via.placeholder.com/150" alt="Team Member 4" class="w-32 h-32 mx-auto rounded-full mb-4">
+          <h3 class="text-xl font-bold">Tommy High</h3>
+          <p class="text-gray-300">Tech Wizard</p>
         </div>
-    </div>
-</section>
+      </div>
+    </section>
     <section id="help-support" class="py-16 px-4 bg-gradient-to-r from-black to-green-900 text-center text-white">
-    <h2 class="text-3xl md:text-4xl font-bold orbitron neon-text mb-6">Need Help? We're Here for You</h2>
-    <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
-        Got questions or need support? Reach out to our team 24/7 for assistance.
-    </p>
-    <div class="flex flex-col sm:flex-row justify-center gap-4">
+      <h2 class="text-3xl md:text-4xl font-bold orbitron neon-text mb-6">Need Help? We're Here for You</h2>
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8"> Got questions or need support? Reach out to our team 24/7 for assistance. </p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
         <a href="mailto:support@ganjaguru.com" class="neon-button px-8 py-4 rounded-full orbitron text-lg">Contact Support</a>
-        <a href="#faqs" class="px-8 py-4 rounded-full orbitron text-lg bg-white text-green-900 hover:bg-gray-200 transition duration-300">
-            Browse FAQs
-        </a>
-    </div>
-</section>
-<section id="faqs" class="py-16 px-4 bg-gradient-to-bl from-green-800 to-black text-center text-white">
-    <h2 class="text-3xl md:text-4xl font-bold orbitron neon-text mb-6">FAQs</h2>
-    <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
-        Got questions? We’ve got answers.
-    </p>
-    <div class="text-left max-w-4xl mx-auto">
+        <a href="#faqs" class="px-8 py-4 rounded-full orbitron text-lg bg-white text-green-900 hover:bg-gray-200 transition duration-300"> Browse FAQs </a>
+      </div>
+    </section>
+    <section id="faqs" class="py-16 px-4 bg-gradient-to-bl from-green-800 to-black text-center text-white">
+      <h2 class="text-3xl md:text-4xl font-bold orbitron neon-text mb-6">FAQs</h2>
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8"> Got questions? We’ve got answers. </p>
+      <div class="text-left max-w-4xl mx-auto">
         <div class="mb-6">
-            <h3 class="text-xl font-bold">Q: What is GanjaGuru?</h3>
-            <p class="text-gray-300">A: GanjaGuru is your all-in-one cannabis ecosystem for designing, growing, and enjoying cannabis.</p>
+          <h3 class="text-xl font-bold">Q: What is GanjaGuru?</h3>
+          <p class="text-gray-300">A: GanjaGuru is your all-in-one cannabis ecosystem for designing, growing, and enjoying cannabis.</p>
         </div>
         <div class="mb-6">
-            <h3 class="text-xl font-bold">Q: How do I book a consultation?</h3>
-            <p class="text-gray-300">A: Simply use our booking section to pick a date and time that works for you.</p>
+          <h3 class="text-xl font-bold">Q: How do I book a consultation?</h3>
+          <p class="text-gray-300">A: Simply use our booking section to pick a date and time that works for you.</p>
         </div>
         <div class="mb-6">
-            <h3 class="text-xl font-bold">Q: Does GanjaGuru offer delivery?</h3>
-            <p class="text-gray-300">A: Yes, we offer on-demand delivery for all your cannabis needs.</p>
+          <h3 class="text-xl font-bold">Q: Does GanjaGuru offer delivery?</h3>
+          <p class="text-gray-300">A: Yes, we offer on-demand delivery for all your cannabis needs.</p>
         </div>
-    </div>
-</section>
+      </div>
+    </section>
     <section id="testimonials" class="py-16 px-4 bg-gradient-to-r from-green-700 to-purple-700 text-center text-white">
-    <h2 class="text-3xl md:text-4xl font-bold orbitron neon-text mb-6">What Our Customers Say</h2>
-    <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
-        Don’t just take our word for it. Here’s what our customers have to say.
-    </p>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <h2 class="text-3xl md:text-4xl font-bold orbitron neon-text mb-6">What Our Customers Say</h2>
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8"> Don’t just take our word for it. Here’s what our customers have to say. </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <!-- Testimonial 1 -->
         <div class="glass-card p-6">
-            <p class="text-gray-300 mb-4">"The AI recommendations were spot on! Found the perfect strain for my needs."</p>
-            <h4 class="font-bold text-green-400">- Alex G.</h4>
+          <p class="text-gray-300 mb-4">"The AI recommendations were spot on! Found the perfect strain for my needs."</p>
+          <h4 class="font-bold text-green-400">- Alex G.</h4>
         </div>
         <!-- Testimonial 2 -->
         <div class="glass-card p-6">
-            <p class="text-gray-300 mb-4">"Amazing 3D printing service! Got my custom bong delivered in just a week."</p>
-            <h4 class="font-bold text-green-400">- Maria S.</h4>
+          <p class="text-gray-300 mb-4">"Amazing 3D printing service! Got my custom bong delivered in just a week."</p>
+          <h4 class="font-bold text-green-400">- Maria S.</h4>
         </div>
         <!-- Testimonial 3 -->
         <div class="glass-card p-6">
-            <p class="text-gray-300 mb-4">"The grow room design consultation was a game-changer for my setup."</p>
-            <h4 class="font-bold text-green-400">- Chris T.</h4>
+          <p class="text-gray-300 mb-4">"The grow room design consultation was a game-changer for my setup."</p>
+          <h4 class="font-bold text-green-400">- Chris T.</h4>
         </div>
-    </div>
-</section>
+      </div>
+    </section>
     <section id="gamification" class="py-16 px-4 bg-gradient-to-tr from-green-800 to-yellow-800 text-center text-white">
-    <h2 class="text-3xl md:text-4xl font-bold orbitron neon-text mb-6">Gamify Your Experience</h2>
-    <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
-        Earn points, badges, and rewards as you explore our platform. Complete challenges and unlock exclusive perks.
-    </p>
-    <button id="start-gamification" class="neon-button px-6 py-3 rounded-full orbitron text-base sm:text-lg">
-        Start Playing
-    </button>
-    <canvas id="confetti-canvas" class="mt-4"></canvas>
-</section>
-   <section id="marketplace" class="py-16 px-4 bg-gradient-to-r from-green-900 to-purple-900 text-center text-white">
-    <h2 class="text-3xl md:text-4xl font-bold orbitron neon-text mb-6">Cannabis Marketplace</h2>
-    <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
-        Shop premium cannabis seeds, tools, and accessories. Grow, smoke, and chill with the best.
-    </p>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <h2 class="text-3xl md:text-4xl font-bold orbitron neon-text mb-6">Gamify Your Experience</h2>
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8"> Earn points, badges, and rewards as you explore our platform. Complete challenges and unlock exclusive perks. </p>
+      <button id="start-gamification" class="neon-button px-6 py-3 rounded-full orbitron text-base sm:text-lg"> Start Playing </button>
+      <canvas id="confetti-canvas" class="mt-4"></canvas>
+    </section>
+    <section id="marketplace" class="py-16 px-4 bg-gradient-to-r from-green-900 to-purple-900 text-center text-white">
+      <h2 class="text-3xl md:text-4xl font-bold orbitron neon-text mb-6">Cannabis Marketplace</h2>
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8"> Shop premium cannabis seeds, tools, and accessories. Grow, smoke, and chill with the best. </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <!-- Product Card 1 -->
         <div class="glass-card p-6">
-            <img src="https://via.placeholder.com/150" alt="Product 1" class="w-full h-40 object-cover rounded-lg mb-4">
-            <h3 class="text-xl font-bold mb-2">Premium OG Kush Seeds</h3>
-            <p class="text-gray-300 mb-4">Grow the dankest OG Kush with our top-quality seeds.</p>
-            <button class="neon-button px-6 py-3 rounded-full w-full">Buy Now</button>
+          <img src="https://via.placeholder.com/150" alt="Product 1" class="w-full h-40 object-cover rounded-lg mb-4">
+          <h3 class="text-xl font-bold mb-2">Premium OG Kush Seeds</h3>
+          <p class="text-gray-300 mb-4">Grow the dankest OG Kush with our top-quality seeds.</p>
+          <button class="neon-button px-6 py-3 rounded-full w-full">Buy Now</button>
         </div>
         <!-- Product Card 2 -->
         <div class="glass-card p-6">
-            <img src="https://via.placeholder.com/150" alt="Product 2" class="w-full h-40 object-cover rounded-lg mb-4">
-            <h3 class="text-xl font-bold mb-2">Smart Grow Lights</h3>
-            <p class="text-gray-300 mb-4">Automate your grow setup with IoT-enabled grow lights.</p>
-            <button class="neon-button px-6 py-3 rounded-full w-full">Shop Now</button>
+          <img src="https://via.placeholder.com/150" alt="Product 2" class="w-full h-40 object-cover rounded-lg mb-4">
+          <h3 class="text-xl font-bold mb-2">Smart Grow Lights</h3>
+          <p class="text-gray-300 mb-4">Automate your grow setup with IoT-enabled grow lights.</p>
+          <button class="neon-button px-6 py-3 rounded-full w-full">Shop Now</button>
         </div>
         <!-- Product Card 3 -->
         <div class="glass-card p-6">
-            <img src="https://via.placeholder.com/150" alt="Product 3" class="w-full h-40 object-cover rounded-lg mb-4">
-            <h3 class="text-xl font-bold mb-2">Custom Bong Designs</h3>
-            <p class="text-gray-300 mb-4">Get personalized bongs with our 3D-printing service.</p>
-            <button class="neon-button px-6 py-3 rounded-full w-full">Order Now</button>
+          <img src="https://via.placeholder.com/150" alt="Product 3" class="w-full h-40 object-cover rounded-lg mb-4">
+          <h3 class="text-xl font-bold mb-2">Custom Bong Designs</h3>
+          <p class="text-gray-300 mb-4">Get personalized bongs with our 3D-printing service.</p>
+          <button class="neon-button px-6 py-3 rounded-full w-full">Order Now</button>
         </div>
-    </div>
-</section>
+      </div>
+    </section>
     <section id="3d-printing" class="py-16 px-4 bg-gradient-to-br from-green-900 to-amber-900 text-center text-white">
-    <h2 class="text-3xl md:text-4xl font-bold orbitron neon-text mb-6">3D Print Accessories</h2>
-    <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
-        Design and print custom bongs, pipes, and tools with ease. Upload your 3D model or explore our templates.
-    </p>
-    <div id="3d-canvas" class="glass-card mx-auto p-8 max-w-3xl">
+      <h2 class="text-3xl md:text-4xl font-bold orbitron neon-text mb-6">3D Print Accessories</h2>
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8"> Design and print custom bongs, pipes, and tools with ease. Upload your 3D model or explore our templates. </p>
+      <div id="3d-canvas" class="glass-card mx-auto p-8 max-w-3xl">
         <p class="text-white">Upload your STL file to preview your design:</p>
         <input type="file" id="stl-upload" accept=".stl" class="mt-4 bg-black bg-opacity-50 border border-green-700 rounded px-4 py-3 text-white w-full">
-    </div>
-</section>
+      </div>
+    </section>
     <!-- CTA Section -->
     <section class="py-16 px-4 bg-gradient-to-r from-green-900 to-purple-900 bg-opacity-50">
-        <div class="container mx-auto text-center">
-            <h2 class="text-3xl md:text-4xl font-bold orbitron mb-6 text-white">Ready to Revolutionize Your Cannabis Experience?</h2>
-            <p class="text-xl text-gray-200 max-w-3xl mx-auto mb-8">
-                Join 2,500+ ganjapreneurs already growing with us.
-            </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <button class="neon-button px-8 py-4 rounded-full orbitron text-lg">
-                    Sign Up Free
-                </button>
-                <button class="px-8 py-4 rounded-full orbitron text-lg bg-white text-green-900 hover:bg-gray-200 transition duration-300">
-                    Schedule a Demo
-                </button>
-            </div>
+      <div class="container mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold orbitron mb-6 text-white">Ready to Revolutionize Your Cannabis Experience?</h2>
+        <p class="text-xl text-gray-200 max-w-3xl mx-auto mb-8"> Join 2,500+ ganjapreneurs already growing with us. </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+          <button class="neon-button px-8 py-4 rounded-full orbitron text-lg"> Sign Up Free </button>
+          <button class="px-8 py-4 rounded-full orbitron text-lg bg-white text-green-900 hover:bg-gray-200 transition duration-300"> Schedule a Demo </button>
         </div>
+      </div>
     </section>
     <section id="resources" class="py-16 px-4 bg-gradient-to-tr from-green-900 to-blue-900 text-center text-white">
-    <h2 class="text-3xl md:text-4xl font-bold orbitron neon-text mb-6">Educational Resources</h2>
-    <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
-        Learn everything from seed-to-smoke with our expert guides, videos, and tutorials.
-    </p>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <h2 class="text-3xl md:text-4xl font-bold orbitron neon-text mb-6">Educational Resources</h2>
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8"> Learn everything from seed-to-smoke with our expert guides, videos, and tutorials. </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <!-- Resource Card 1 -->
         <div class="glass-card p-6">
-            <h3 class="text-xl font-bold mb-2">Beginner's Guide to Growing</h3>
-            <p class="text-gray-300 mb-4">Step-by-step instructions to grow your first cannabis plant.</p>
-            <a href="#guide1" class="neon-button px-6 py-3 rounded-full">Read More</a>
+          <h3 class="text-xl font-bold mb-2">Beginner's Guide to Growing</h3>
+          <p class="text-gray-300 mb-4">Step-by-step instructions to grow your first cannabis plant.</p>
+          <a href="#guide1" class="neon-button px-6 py-3 rounded-full">Read More</a>
         </div>
         <!-- Resource Card 2 -->
         <div class="glass-card p-6">
-            <h3 class="text-xl font-bold mb-2">3D Printing Tutorial</h3>
-            <p class="text-gray-300 mb-4">Learn how to design and print custom accessories.</p>
-            <a href="#guide2" class="neon-button px-6 py-3 rounded-full">Watch Video</a>
+          <h3 class="text-xl font-bold mb-2">3D Printing Tutorial</h3>
+          <p class="text-gray-300 mb-4">Learn how to design and print custom accessories.</p>
+          <a href="#guide2" class="neon-button px-6 py-3 rounded-full">Watch Video</a>
         </div>
         <!-- Resource Card 3 -->
         <div class="glass-card p-6">
-            <h3 class="text-xl font-bold mb-2">Cannabis Strain Database</h3>
-            <p class="text-gray-300 mb-4">Explore detailed profiles of popular cannabis strains.</p>
-            <a href="#database" class="neon-button px-6 py-3 rounded-full">Explore Now</a>
+          <h3 class="text-xl font-bold mb-2">Cannabis Strain Database</h3>
+          <p class="text-gray-300 mb-4">Explore detailed profiles of popular cannabis strains.</p>
+          <a href="#database" class="neon-button px-6 py-3 rounded-full">Explore Now</a>
         </div>
-    </div>
-</section>
+      </div>
+    </section>
     <section id="community" class="py-16 px-4 bg-gradient-to-bl from-black to-green-800 text-center text-white">
-    <h2 class="text-3xl md:text-4xl font-bold orbitron neon-text mb-6">Join the Community</h2>
-    <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
-        Connect with fellow ganjapreneurs, share tips, and grow together.
-    </p>
-    <div class="flex flex-col sm:flex-row justify-center gap-4">
+      <h2 class="text-3xl md:text-4xl font-bold orbitron neon-text mb-6">Join the Community</h2>
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8"> Connect with fellow ganjapreneurs, share tips, and grow together. </p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
         <a href="#forums" class="neon-button px-8 py-4 rounded-full orbitron text-lg">Visit Forums</a>
         <a href="#chat" class="px-8 py-4 rounded-full orbitron text-lg bg-white text-green-900 hover:bg-gray-200 transition duration-300">Join the Discord</a>
-    </div>
-</section>
+      </div>
+    </section>
     <!-- Footer -->
     <footer class="bg-black py-12 px-4">
-        <div class="container mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div>
-                    <h3 class="text-xl font-bold orbitron text-white mb-4">The GanjaGuru</h3>
-                    <p class="text-gray-400 mb-4">
-                        From Seed to Smoke, We've Got You Covered—Eco-Friendly, Tech-Driven, and Always Lit.
-                    </p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-green-400 transition-colors duration-300">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-green-400 transition-colors duration-300">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-green-400 transition-colors duration-300">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-green-400 transition-colors duration-300">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <div>
-                    <h3 class="text-xl font-bold orbitron text-white mb-4">Quick Links</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#features" class="text-gray-400 hover:text-green-400 transition-colors duration-300">Features</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-green-400 transition-colors duration-300">Products</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-green-400 transition-colors duration-300">Pricing</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-green-400 transition-colors duration-300">FAQ</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h3 class="text-xl font-bold orbitron text-white mb-4">Legal</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-green-400 transition-colors duration-300">Privacy Policy</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-green-400 transition-colors duration-300">Terms of Service</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-green-400 transition-colors duration-300">Cookie Policy</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-green-400 transition-colors duration-300">Legal Notice</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h3 class="text-xl font-bold orbitron text-white mb-4">Newsletter</h3>
-                    <p class="text-gray-400 mb-4">
-                        Stay updated on the latest cannabis innovations.
-                    </p>
-                    <form class="flex">
-                        <input 
-                            type="email" 
-                            placeholder="Your email" 
-                            class="flex-grow bg-gray-900 border border-gray-700 rounded-l-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-green-500 text-base"
-                        >
-                        <button type="submit" class="bg-green-700 hover:bg-green-600 text-white px-4 rounded-r-lg transition-colors duration-300">
-                            <i class="fas fa-paper-plane"></i>
-                        </button>
-                    </form>
-                </div>
+      <div class="container mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div>
+            <h3 class="text-xl font-bold orbitron text-white mb-4">The GanjaGuru</h3>
+            <p class="text-gray-400 mb-4"> From Seed to Smoke, We've Got You Covered—Eco-Friendly, Tech-Driven, and Always Lit. </p>
+            <div class="flex space-x-4">
+              <a href="#" class="text-gray-400 hover:text-green-400 transition-colors duration-300">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-green-400 transition-colors duration-300">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-green-400 transition-colors duration-300">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-green-400 transition-colors duration-300">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
             </div>
-            
-            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500">
-                <p>&copy; 2023 The GanjaGuru. All rights reserved. Must be 18+ to use our services.</p>
-            </div>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold orbitron text-white mb-4">Quick Links</h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="#features" class="text-gray-400 hover:text-green-400 transition-colors duration-300">Features</a>
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-green-400 transition-colors duration-300">Products</a>
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-green-400 transition-colors duration-300">Pricing</a>
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-green-400 transition-colors duration-300">FAQ</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold orbitron text-white mb-4">Legal</h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="#" class="text-gray-400 hover:text-green-400 transition-colors duration-300">Privacy Policy</a>
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-green-400 transition-colors duration-300">Terms of Service</a>
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-green-400 transition-colors duration-300">Cookie Policy</a>
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-green-400 transition-colors duration-300">Legal Notice</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold orbitron text-white mb-4">Newsletter</h3>
+            <p class="text-gray-400 mb-4"> Stay updated on the latest cannabis innovations. </p>
+            <form class="flex">
+              <input type="email" placeholder="Your email" class="flex-grow bg-gray-900 border border-gray-700 rounded-l-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-green-500 text-base">
+              <button type="submit" class="bg-green-700 hover:bg-green-600 text-white px-4 rounded-r-lg transition-colors duration-300">
+                <i class="fas fa-paper-plane"></i>
+              </button>
+            </form>
+          </div>
         </div>
+        <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500">
+          <p>&copy; 2023 The GanjaGuru. All rights reserved. Must be 18+ to use our services.</p>
+        </div>
+      </div>
     </footer>
-
     <script>
-        // Mobile Menu Toggle
-        document.getElementById('mobile-menu-button').addEventListener('click', function() {
-            const mobileMenu = document.getElementById('mobile-menu');
-            mobileMenu.classList.toggle('hidden');
-        });
-        
-        // Smoke Animation
-        function createSmoke() {
-            const jointTip = document.getElementById('joint-tip');
-            const jointRect = jointTip.getBoundingClientRect();
-            const smokeContainer = document.getElementById('smoke-container');
-            
-            // Create a smoke element
-            const smoke = document.createElement('div');
-            smoke.classList.add('smoke');
-            smoke.style.width = '30px';
-            smoke.style.height = '30px';
-            smoke.style.backgroundColor = 'rgba(255, 255, 255, 0.4)';
-            smoke.style.borderRadius = '50%';
-            smoke.style.filter = 'blur(8px)';
-            
-            // Position at joint tip
-            smoke.style.position = 'absolute';
-            smoke.style.left = '0';
-            smoke.style.top = '5px';
-            
-            // Add smoke to container
-            smokeContainer.appendChild(smoke);
-            
-            // After animation completes, remove the element
-            setTimeout(() => {
-                smokeContainer.removeChild(smoke);
-            }, 3000);
-        }
-        
-        // Create smoke every 3 seconds
-        setInterval(createSmoke, 3000);
-        createSmoke(); // Create one immediately
-        
-        // Chat functionality with Poe API integration
-        const chatForm = document.getElementById('chat-form');
-        const userInput = document.getElementById('user-input');
-        const chatMessages = document.getElementById('chat-messages');
-        
-        // Register a handler for Poe API responses
-        window.Poe.registerHandler("ganja-guru-handler", (result, context) => {
-            const messageId = context.messageId;
-            const loadingElement = document.getElementById(`loading-${messageId}`);
-            
-            // Get the first response - we're only expecting one for a single bot
-            const response = result.responses[0];
-            
-            // Handle different message statuses
-            if (response.status === "error") {
-                // Update the loading message to show error
-                if (loadingElement) {
-                    loadingElement.innerHTML = `
-                        <div class="glass-card p-3 rounded-lg rounded-tl-none max-w-[80%] bg-red-900 bg-opacity-30">
-                            <p class="text-white">Error: ${response.statusText || "Something went wrong. Please try again."}</p>
-                        </div>
+      // Mobile Menu Toggle
+      document.getElementById('mobile-menu-button').addEventListener('click', function() {
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenu.classList.toggle('hidden');
+      });
+      // Smoke Animation
+      function createSmoke() {
+        const jointTip = document.getElementById('joint-tip');
+        const jointRect = jointTip.getBoundingClientRect();
+        const smokeContainer = document.getElementById('smoke-container');
+        // Create a smoke element
+        const smoke = document.createElement('div');
+        smoke.classList.add('smoke');
+        smoke.style.width = '30px';
+        smoke.style.height = '30px';
+        smoke.style.backgroundColor = 'rgba(255, 255, 255, 0.4)';
+        smoke.style.borderRadius = '50%';
+        smoke.style.filter = 'blur(8px)';
+        // Position at joint tip
+        smoke.style.position = 'absolute';
+        smoke.style.left = '0';
+        smoke.style.top = '5px';
+        // Add smoke to container
+        smokeContainer.appendChild(smoke);
+        // After animation completes, remove the element
+        setTimeout(() => {
+          smokeContainer.removeChild(smoke);
+        }, 3000);
+      }
+      // Create smoke every 3 seconds
+      setInterval(createSmoke, 3000);
+      createSmoke(); // Create one immediately
+      // Chat functionality with Poe API integration
+      const chatForm = document.getElementById('chat-form');
+      const userInput = document.getElementById('user-input');
+      const chatMessages = document.getElementById('chat-messages');
+      // Register a handler for Poe API responses
+      window.Poe.registerHandler("ganja-guru-handler", (result, context) => {
+        const messageId = context.messageId;
+        const loadingElement = document.getElementById(`loading-${messageId}`);
+        // Get the first response - we're only expecting one for a single bot
+        const response = result.responses[0];
+        // Handle different message statuses
+        if (response.status === "error") {
+          // Update the loading message to show error
+          if (loadingElement) {
+            loadingElement.innerHTML = `
+                        
+																																					
+																																					
+																																					<div class="glass-card p-3 rounded-lg rounded-tl-none max-w-[80%] bg-red-900 bg-opacity-30">
+																																						<p class="text-white">Error: ${response.statusText || "Something went wrong. Please try again."}</p>
+																																					</div>
                     `;
-                    loadingElement.id = `error-${messageId}`;
-                }
-            } else if (response.status === "incomplete") {
-                // Update the loading message with partial content
-                if (loadingElement) {
-                    loadingElement.querySelector('.message-content').textContent = response.content;
-                }
-            } else if (response.status === "complete") {
-                // Update with complete message
-                if (loadingElement) {
-                    loadingElement.id = `message-${messageId}`;
-                    loadingElement.querySelector('.message-content').textContent = response.content;
+            loadingElement.id = `error-${messageId}`;
+          }
+        } else if (response.status === "incomplete") {
+          // Update the loading message with partial content
+          if (loadingElement) {
+            loadingElement.querySelector('.message-content').textContent = response.content;
+          }
+        } else if (response.status === "complete") {
+          // Update with complete message
+          if (loadingElement) {
+            loadingElement.id = `message-${messageId}`;
+            loadingElement.querySelector('.message-content').textContent = response.content;
+            // Add a completed class to maybe style differently
+            loadingElement.classList.add('completed');
+          }
+          // Scroll to bottom
+          chatMessages.scrollTop = chatMessages.scrollHeight;
+          // Re-enable the input and button
+          userInput.disabled = false;
+          document.querySelector('#chat-form button').disabled = false;
+          userInput.focus();
+        }
+      });
+      // Function to add a message to the chat
+      function addMessage(sender, text, messageId = null, isLoading = false) {
+        const messageDiv = document.createElement('div');
+        messageDiv.classList.add('chat-message', 'flex');
+        if (sender === 'user') {
+          messageDiv.classList.add('justify-end');
+          messageDiv.innerHTML = `
                     
-                    // Add a completed class to maybe style differently
-                    loadingElement.classList.add('completed');
-                }
-                
-                // Scroll to bottom
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-                
-                // Re-enable the input and button
-                userInput.disabled = false;
-                document.querySelector('#chat-form button').disabled = false;
-                userInput.focus();
-            }
-        });
-        
-        // Function to add a message to the chat
-        function addMessage(sender, text, messageId = null, isLoading = false) {
-            const messageDiv = document.createElement('div');
-            messageDiv.classList.add('chat-message', 'flex');
-            
-            if (sender === 'user') {
-                messageDiv.classList.add('justify-end');
-                messageDiv.innerHTML = `
-                    <div class="glass-card p-3 rounded-lg rounded-tr-none max-w-[80%] bg-green-900 bg-opacity-30">
-                        <p class="text-white">${text}</p>
-                    </div>
-                    <div class="w-10 h-10 rounded-full bg-gray-700 flex-shrink-0 flex items-center justify-center ml-3">
-                        <i class="fas fa-user text-white"></i>
-                    </div>
+																																					
+																																					
+																																					<div class="glass-card p-3 rounded-lg rounded-tr-none max-w-[80%] bg-green-900 bg-opacity-30">
+																																						<p class="text-white">${text}</p>
+																																					</div>
+																																					<div class="w-10 h-10 rounded-full bg-gray-700 flex-shrink-0 flex items-center justify-center ml-3">
+																																						<i class="fas fa-user text-white"></i>
+																																					</div>
                 `;
-            } else {
-                // If it's a loading message, add a loading indicator
-                let loadingIndicator = '';
-                if (isLoading) {
-                    loadingIndicator = '<span class="ml-2 inline-block animate-pulse">...</span>';
-                    messageDiv.id = `loading-${messageId}`;
-                } else {
-                    messageDiv.id = `message-${messageId}`;
-                }
-                
-                messageDiv.innerHTML = `
-                    <div class="w-10 h-10 rounded-full bg-gradient-to-r from-green-500 to-green-700 flex-shrink-0 flex items-center justify-center mr-3">
-                        <i class="fas fa-cannabis text-white"></i>
-                    </div>
-                    <div class="glass-card p-3 rounded-lg rounded-tl-none max-w-[80%]">
-                        <p class="text-white message-content">${text}</p>
+        } else {
+          // If it's a loading message, add a loading indicator
+          let loadingIndicator = '';
+          if (isLoading) {
+            loadingIndicator = ' < span class = "ml-2 inline-block animate-pulse" > ... < /span>';
+            messageDiv.id = `loading-${messageId}`;
+          } else {
+            messageDiv.id = `message-${messageId}`;
+          }
+          messageDiv.innerHTML = `
+                    
+																																					
+																																					
+																																					<div class="w-10 h-10 rounded-full bg-gradient-to-r from-green-500 to-green-700 flex-shrink-0 flex items-center justify-center mr-3">
+																																						<i class="fas fa-cannabis text-white"></i>
+																																					</div>
+																																					<div class="glass-card p-3 rounded-lg rounded-tl-none max-w-[80%]">
+																																						<p class="text-white message-content">${text}</p>
                         ${loadingIndicator}
-                    </div>
+                    
+																																					
+																																					
+																																					</div>
                 `;
-            }
-            
-            chatMessages.appendChild(messageDiv);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-            
-            return messageDiv;
         }
-        
-        chatForm.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            const message = userInput.value.trim();
-            if (message === '') return;
-            
-            // Add user message to the chat
-            addMessage('user', message);
-            
-            // Clear the input field and disable it until response is received
-            userInput.value = '';
-            userInput.disabled = true;
-            document.querySelector('#chat-form button').disabled = true;
-            
-            // Generate a unique ID for this message
-            const messageId = `msg-${Date.now()}`;
-            
-            // Add a loading message for the bot
-            addMessage('bot', 'GanjaGuru is thinking...', messageId, true);
-            
-            try {
-                // Send the message to the Poe API, prefixing with Claude bot mention
-                // Since Claude is great for conversational AI, we'll use it as our default bot
-                await window.Poe.sendUserMessage(
-                    `@Claude-3.7-Sonnet You are the GanjaGuru, an AI-powered cannabis expert with the wisdom of Willie Nelson, the swagger of Snoop Dogg, the discipline of Bruce Lee, and the creativity of John Lennon. You have deep knowledge of cannabis cultivation, products, consumption methods, and the industry. Please respond to this user query about cannabis in a friendly, slightly edgy tone with cannabis expertise: ${message}`,
-                    {
-                        handler: "ganja-guru-handler",
-                        stream: true,  // Stream the response for better UX
-                        openChat: false, // Don't open the chat UI as we're handling in our own UI
-                        handlerContext: { messageId: messageId }
-                    }
-                );
-            } catch (err) {
-                // Handle errors from the Poe API
-                console.error("Error sending message:", err);
-                
-                // Find the loading message and replace it with an error
-                const loadingElement = document.getElementById(`loading-${messageId}`);
-                if (loadingElement) {
-                    loadingElement.id = `error-${messageId}`;
-                    loadingElement.innerHTML = `
-                        <div class="w-10 h-10 rounded-full bg-gradient-to-r from-red-500 to-red-700 flex-shrink-0 flex items-center justify-center mr-3">
-                            <i class="fas fa-exclamation-triangle text-white"></i>
-                        </div>
-                        <div class="glass-card p-3 rounded-lg rounded-tl-none max-w-[80%] bg-red-900 bg-opacity-30">
-                            <p class="text-white">Error: ${err.message || "Failed to get response"}</p>
-                        </div>
+        chatMessages.appendChild(messageDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+        return messageDiv;
+      }
+      chatForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const message = userInput.value.trim();
+        if (message === '') return;
+        // Add user message to the chat
+        addMessage('user', message);
+        // Clear the input field and disable it until response is received
+        userInput.value = '';
+        userInput.disabled = true;
+        document.querySelector('#chat-form button').disabled = true;
+        // Generate a unique ID for this message
+        const messageId = `msg-${Date.now()}`;
+        // Add a loading message for the bot
+        addMessage('bot', 'GanjaGuru is thinking...', messageId, true);
+        try {
+          // Send the message to the Poe API, prefixing with Claude bot mention
+          // Since Claude is great for conversational AI, we'll use it as our default bot
+          await window.Poe.sendUserMessage(`@Claude-3.7-Sonnet You are the GanjaGuru, an AI-powered cannabis expert with the wisdom of Willie Nelson, the swagger of Snoop Dogg, the discipline of Bruce Lee, and the creativity of John Lennon. You have deep knowledge of cannabis cultivation, products, consumption methods, and the industry. Please respond to this user query about cannabis in a friendly, slightly edgy tone with cannabis expertise: ${message}`, {
+            handler: "ganja-guru-handler",
+            stream: true, // Stream the response for better UX
+            openChat: false, // Don't open the chat UI as we're handling in our own UI
+            handlerContext: {
+              messageId: messageId
+            }
+          });
+        } catch (err) {
+          // Handle errors from the Poe API
+          console.error("Error sending message:", err);
+          // Find the loading message and replace it with an error
+          const loadingElement = document.getElementById(`loading-${messageId}`);
+          if (loadingElement) {
+            loadingElement.id = `error-${messageId}`;
+            loadingElement.innerHTML = `
+                        
+																																					
+																																					
+																																					<div class="w-10 h-10 rounded-full bg-gradient-to-r from-red-500 to-red-700 flex-shrink-0 flex items-center justify-center mr-3">
+																																						<i class="fas fa-exclamation-triangle text-white"></i>
+																																					</div>
+																																					<div class="glass-card p-3 rounded-lg rounded-tl-none max-w-[80%] bg-red-900 bg-opacity-30">
+																																						<p class="text-white">Error: ${err.message || "Failed to get response"}</p>
+																																					</div>
                     `;
-                }
-                
-                // Re-enable the input and button
-                userInput.disabled = false;
-                document.querySelector('#chat-form button').disabled = false;
-            }
-        });
-        
-        // Dark mode support
-        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            document.documentElement.classList.add('dark');
+          }
+          // Re-enable the input and button
+          userInput.disabled = false;
+          document.querySelector('#chat-form button').disabled = false;
         }
-        
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
-            if (event.matches) {
-                document.documentElement.classList.add('dark');
-            } else {
-                document.documentElement.classList.remove('dark');
-            }
-        });
+      });
+      // Dark mode support
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.classList.add('dark');
+      }
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+        if (event.matches) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      });
     </script>
-</body>
+    <script>
+      // Mobile Menu Toggle
+      document.getElementById('mobile-menu-button').addEventListener('click', function() {
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenu.classList.toggle('hidden');
+      });
+    </script>
+    <script>
+      const confetti = new ConfettiGenerator({
+        target: 'confetti-canvas'
+      });
+      confetti.render();
+    </script>
+  </body>
 </html>
