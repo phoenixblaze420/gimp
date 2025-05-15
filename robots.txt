@@ -1,0 +1,57 @@
+# robots.txt for https://potgrowhub.com
+
+User-agent: *
+Allow: /
+
+# Block admin or sensitive directories (if applicable)
+Disallow: /admin/
+Disallow: /login/
+Disallow: /dashboard/
+Disallow: /checkout/
+Disallow: /cart/
+Disallow: /user-data/
+
+# Sitemap(s) to help crawlers find content
+Sitemap: https://potgrowhub.com/sitemap.xml
+
+# Google Verification (backup method if not using meta tag)
+# Replace with your actual verification code if preferred this way
+# Google-site-verification: google1234567890abcdef.html
+
+# Host directive (for Yandex and others)
+Host: https://potgrowhub.com
+
+# Crawl-delay for less server load (optional, used by some bots like Bing/Yandex)
+# Crawl-delay: 10
+
+# Specific bot allowances (optional examples)
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: FacebookExternalHit
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+# Block known bad bots (optional security step)
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: BLEXBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
